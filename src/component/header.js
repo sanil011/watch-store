@@ -1,4 +1,4 @@
-import { Typography, Stack, Divider, Grid } from "@mui/material";
+import { Typography, Stack, Divider, Grid, Box } from "@mui/material";
 import Link from "next/link";
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -99,12 +99,12 @@ const Header = () => {
                             alignItems: "center",
                             justifyContent: "space-evenly",
                             color: "grey",
-                            fontSize: "10px"
+                            fontSize: "9px"
                         }}>
                             GET SOCIAL:
                             <LinkedInIcon size="small" />
-                            <InstagramIcon />
-                            <TwitterIcon />
+                            <InstagramIcon size="small" />
+                            <TwitterIcon size="small" />
                         </div>
                     </Grid>
                 </Grid>
@@ -122,7 +122,7 @@ const Header = () => {
                                 padding: ".3px"
                             }} />
                     </Grid>
-                    <Grid item sx={{ width: "72%", display: "flex", justifyContent: "center" }}>
+                    <Grid item sx={{ width: "70%", display: "flex", justifyContent: "center" }}>
                         <Stack direction="row" spacing={2}
                             sx={{
                                 // textAlign: "center",
@@ -138,20 +138,22 @@ const Header = () => {
 
                         </Stack>
                     </Grid>
-                    <Grid item sx={{ display: "flex", width: "10%", justifyContent: "space-evenly" }}>
+                    <Grid item sx={{ display: "flex", width: "12%", justifyContent: "space-evenly" }}>
                         <Divider
                             orientation="vertical"
                             flexItem
                             sx={{
                                 bgcolor: "grey.main",
                                 padding: ".3px",
-                                marginLeft: "4px"
+                                marginLeft: "0px"
                             }} />
-                        <FavoriteBorderIcon />
-                        <Typography>
+                        <Box color={"grey.main"}>
+                            <FavoriteBorderIcon />
+                        </Box>
+                        <Typography variant="body2" fontWeight={600}>
                             My Favorite
                         </Typography>
-                        <Typography>
+                        <Typography variant="body2" color={"grey.main"} fontWeight={600}>
                             0
                         </Typography>
                         <Divider
@@ -160,15 +162,15 @@ const Header = () => {
                             sx={{
                                 bgcolor: "grey.main",
                                 padding: ".3px",
-                                marginRight: "4px"
+                                marginRight: "0px"
                             }} />
                     </Grid>
                     <Grid item sx={{ display: "flex", width: "10%", justifyContent: "space-evenly" }}>
                         <LocalMallIcon />
-                        <Typography>
+                        <Typography variant="body2" fontWeight={600}>
                             My Cart
                         </Typography>
-                        <Typography>
+                        <Typography variant="body2" color={"grey.main"} fontWeight={600}>
                             0
                         </Typography>
 
