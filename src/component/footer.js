@@ -3,7 +3,7 @@ import { grey } from "@mui/material/colors";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
-const footer = () => {
+const Footer = () => {
     const customer = ["My Account", "Shop", "Wishlist", "Contacts", "Term and Condition"];
     const company = ["About us", "Delivery", "Payment", "Contacts us"];
     const shop = ["For Him", "For Her", "For Kid", "Smart Watches", "Casio"];
@@ -135,4 +135,4 @@ const footer = () => {
     )
 }
 
-export default footer
+export default Footer

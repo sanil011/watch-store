@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Typography, Divider, Box, Stack } from "@mui/material";
 import { Watches } from "../store/watches"
-const product = (name) => {
+const Product = (name) => {
     console.log(name)
     const item = Watches[name.name];
     return (
@@ -24,4 +24,4 @@ const product = (name) => {
     )
 }
 
-export default product
+export default Product
