@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Watches } from "./Watches";
+import { Watches } from "./watches";
 const initialState = { watches: Object.keys(Watches), Brands: [], Colors: [], Prices: [], Straps: [] };
 
 export const filterSlice = createSlice({
