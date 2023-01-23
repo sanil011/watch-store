@@ -3,6 +3,8 @@ import { grey } from "@mui/material/colors";
 import "../styles/home.css"
 import Header from "../component/header";
 import Footer from "../component/footer";
+import store from "../store/store";
+import { Provider } from "react-redux";
 const theme = createTheme({
   palette: {
     mode: "light",
@@ -26,10 +28,12 @@ const theme = createTheme({
 
 export default function App({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </ThemeProvider>
+    </Provider>
   );
 }

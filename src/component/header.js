@@ -99,12 +99,12 @@ const Header = () => {
                             alignItems: "center",
                             justifyContent: "space-evenly",
                             color: "grey",
-                            fontSize: "9px"
+                            fontSize: "0.6rem"
                         }}>
                             GET SOCIAL:
-                            <LinkedInIcon size="small" />
-                            <InstagramIcon size="small" />
-                            <TwitterIcon size="small" />
+                            <LinkedInIcon />
+                            <InstagramIcon />
+                            <TwitterIcon />
                         </div>
                     </Grid>
                 </Grid>
@@ -130,12 +130,21 @@ const Header = () => {
                                 // width: "100%"
                             }}
                         >
-                            <Typography>WOMEN</Typography>
-                            <Typography>MEN</Typography>
-                            <Typography>KIDS</Typography>
-                            <Typography>BRANDS</Typography>
-                            <Typography>OFFERS</Typography>
-
+                            <Link href='/shop' sx={{ textDecoration: "none" }}>
+                                <Typography color="#000000">WOMEN</Typography>
+                            </Link>
+                            <Link href='/shop'>
+                                <Typography color="#000000">MEN</Typography>
+                            </Link>
+                            <Link href='/shop'>
+                                <Typography color="#000000">KIDS</Typography>
+                            </Link>
+                            <Link href='/shop'>
+                                <Typography color="#000000">BRANDS</Typography>
+                            </Link>
+                            <Link href='/shop'>
+                                <Typography color="#000000">OFFERS</Typography>
+                            </Link>
                         </Stack>
                     </Grid>
                     <Grid item sx={{ display: "flex", width: "12%", justifyContent: "space-evenly" }}>

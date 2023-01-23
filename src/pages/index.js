@@ -41,34 +41,14 @@ export default function Home() {
       <Typography variant='h4' fontWeight={400} textAlign={"center"} sx={{ margin: "30px 0" }}>
         TREND WATCHES
       </Typography>
-      <Divider
-        sx={{
-          bgcolor: "grey.main",
-          padding: ".3px"
-        }}
-      />
+
       <div style={{ display: "flex" }}>
         <Product name="BOLD ROUND ANALOG GUNMETAL DIAL" />
-        <Divider
-          sx={{
-            bgcolor: "grey.main",
-            padding: ".3px"
-          }}
-        />
+
         <Product name={"DAPPER ROUND ANALOG"} />
-        <Divider
-          sx={{
-            bgcolor: "grey.main",
-            padding: ".3px"
-          }}
-        />
+
         <Product name={"ROUND ANALOG WHITE & BEE DIAL LADIES"} />
-        <Divider
-          sx={{
-            bgcolor: "grey.main",
-            padding: ".3px"
-          }}
-        />
+
         <Product name={"ROUND ANALOG WHITE DIAL LADIES"} />
       </div>
 
