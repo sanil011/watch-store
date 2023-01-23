@@ -88,7 +88,7 @@ const Shop = () => {
                 </div>
                 <div style={{ width: "75%", display: "flex", flexWrap: "wrap" }}>
                     {watches.map((db, idx) => (
-                        <div style={{ width: "33.33%" }}>
+                        <div key={idx} style={{ width: "33.33%" }}>
                             <Product name={db} />
                         </div>
                     ))}

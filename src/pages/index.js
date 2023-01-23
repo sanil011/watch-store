@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Typography, Divider, Box, Stack, Button } from "@mui/material";
-import Slider from "../component/slider";
 import Swiper from "../component/swiper";
 import Product from "../component/product";
 import brand1 from "../assets/brand-logo-1.jpg";
@@ -24,7 +23,6 @@ export default function Home() {
     <div>
 
       <Swiper />
-      {/* <Slider /> */}
       <Box display="flex" justifyContent="space-between" marginY="50px">
         {brand?.map((db, idx) => (
           <Stack key={idx} justifyContent={"center"} alignItems={"center"}>
