@@ -2,7 +2,6 @@ import {
     List,
     ListItem,
     ListItemButton,
-    ListItemIcon,
     ListItemText,
     Checkbox,
     ListSubheader,
@@ -10,7 +9,7 @@ import {
     Stack,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const StrapFilter = ({ onChange }) => {
     const [filters, setFilters] = useState([]);
@@ -25,6 +24,7 @@ const StrapFilter = ({ onChange }) => {
         setFilters(newFilters);
         onChange(newFilters);
     };
+
     return (
         <Stack mt={2}>
             <List sx={{ bgcolor: grey[100] }}>

@@ -12,7 +12,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-// import 'swiper/css/autoplay';
+
 import 'swiper/css/scrollbar';
 const Swipers = () => {
     const [currentSlide, setCurrentSlide] = useState(true);

@@ -1,5 +1,5 @@
 import { Slider, Typography, Button, Stack } from "@mui/material";
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { grey } from "@mui/material/colors";
 
 const PriceFilter = ({ onChange }) => {

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { Watches } from "./watches";
-const initialState = { watches: Object.keys(Watches), Brands: [], Colors: [], Prices: [], Straps: [] };
+const initialState = { watches: Object.keys(Watches), Brands: [], Colors: [], Prices: [], Straps: [], Detail: "" };
 
 export const filterSlice = createSlice({
     name: "filter",
@@ -18,6 +18,9 @@ export const filterSlice = createSlice({
         },
         strap: (state, action) => {
             state.Straps = action.payload
+        },
+        detail: (state, action) => {
+            state.Detail = action.payload
         },
         filter(state, action) {
             let filteredItems = [...initialState.watches];

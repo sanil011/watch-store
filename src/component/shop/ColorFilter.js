@@ -10,7 +10,7 @@ import {
     Stack,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ColorFilter = ({ onChange }) => {
     const [filters, setFilters] = useState([]);
@@ -25,6 +25,7 @@ const ColorFilter = ({ onChange }) => {
         setFilters(newFilters);
         onChange(newFilters);
     };
+
     return (
         <Stack mt={2}>
             <List sx={{ bgcolor: grey[100] }}>

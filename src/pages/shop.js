@@ -1,17 +1,6 @@
-import {
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
-    Checkbox,
-    ListSubheader,
-    Typography,
-} from "@mui/material";
+import { Typography } from "@mui/material";
 import { useSelector, useDispatch } from 'react-redux';
-import { grey } from "@mui/material/colors";
 import Product from "@/component/product";
-import { Watches } from "../store/watches"
 import BrandFilter from "@/component/shop/BrandFilter";
 import PriceFilter from "@/component/shop/PriceFilter";
 import StrapFilter from "@/component/shop/StrapFilter";
@@ -19,10 +8,7 @@ import ColorFilter from "@/component/shop/ColorFilter";
 import { filterActions } from "@/store/filterSlice";
 import { useEffect, useState } from "react"
 const Shop = () => {
-    const item = Object.keys(Watches);
-
-    const { watches, Brand, Color, Price, Strap } = useSelector((state) => state.filter);
-
+    const { watches } = useSelector((state) => state.filter);
     const dispatch = useDispatch();
     const [filters, setFilters] = useState({
         BRAND: [],
@@ -75,7 +61,6 @@ const Shop = () => {
         dispatch(filterActions.filter())
     }, [filters])
 
-    let pic;
     return (
         <div style={{ padding: "0 1em" }}>
             <Typography my={4} fontWeight={600} variant="h4" textAlign={"center"}>MEN&lsquo;S WATCHES</Typography>
