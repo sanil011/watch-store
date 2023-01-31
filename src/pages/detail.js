@@ -5,6 +5,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import DescriptionTab from "../component/Tab/tab1"
 import InfoTab from "../component/Tab/tab2"
+import Product from "@/component/product";
 import { useState } from "react"
 const Detail = () => {
     const { Detail } = useSelector((state) => state.filter);
@@ -102,6 +103,22 @@ const Detail = () => {
                 />
             )}
             {/* {activeTab === "reviews" && <ReviewsTab name={item.toLowerCase()} />}  */}
+
+            <Box>
+                <Typography variant='h4' fontWeight={400} textAlign={"center"} sx={{ margin: "30px 0" }}>
+                    RECOMMENDED WATCHES
+                </Typography>
+
+                <div style={{ display: "flex" }}>
+                    <Product name="THE RUNWELL SPORT CHRONO SILVER" />
+
+                    <Product name={"DAPPER ROUND ANALOG"} />
+
+                    <Product name={"ROUND ANALOG WHITE & BEE DIAL LADIES"} />
+
+                    <Product name={"ROUND ANALOG WHITE DIAL LADIES"} />
+                </div>
+            </Box>
         </div>
     )
 }

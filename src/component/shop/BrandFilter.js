@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
 const BrandFilter = ({ onChange }) => {
     const [filters, setFilters] = useState([]);
     const handleToggle = (value) => () => {

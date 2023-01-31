@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Typography, Button, Box } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -7,6 +6,8 @@ import { useState } from "react";
 import { filterActions } from "@/store/filterSlice";
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
+import { cartActions } from "@/store/cartSlice";
+import { favoriteActions } from "@/store/favoriteSlice";
 const Product = (name) => {
     const item = Watches[name.name];
     const dispatch = useDispatch();
@@ -16,16 +17,23 @@ const Product = (name) => {
         dispatch(filterActions.detail(name));
         router.push('/detail');
     }
+
+    const handleClickCart = () => {
+        dispatch(cartActions.cart(name))
+    }
+    const handleClickFavorite = () => {
+        dispatch(favoriteActions.favorite(name))
+    }
     return (
         <Box
             onMouseOver={() => setShow(true)}
             onMouseOut={() => setShow(false)}
-            onClick={() => handleClick()}
             style={{ display: "flex", flexDirection: "column", width: "100%", padding: "5px 0 15px 0", alignItems: "center", position: "relative", border: ".2px solid grey" }}>
             <img
                 src={item?.src[0]}
                 alt=""
                 width={"80%"}
+                onClick={() => handleClick()}
             />
 
             {!show && <Typography variant='body2'
@@ -50,6 +58,7 @@ const Product = (name) => {
                             backgroundColor: "secondary.main",
                         },
                     }}
+                    onClick={() => handleClickCart()}
                 >
 
                     <ShoppingCartOutlinedIcon
@@ -70,6 +79,7 @@ const Product = (name) => {
                             backgroundColor: "secondary.main",
                         },
                     }}
+                    onClick={() => handleClickFavorite()}
                 >
 
                     <FavoriteBorderOutlinedIcon

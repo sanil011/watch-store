@@ -8,7 +8,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 const Header = () => {
+    const { cartValue } = useSelector((state) => state.cart)
+    const { favoriteValue } = useSelector((state) => state.favorite)
     const router = useRouter();
     return (
         <div>
@@ -148,31 +151,35 @@ const Header = () => {
                         </Stack>
                     </Grid>
                     <Grid item sx={{ display: "flex", width: "12%", justifyContent: "space-evenly" }}>
-                        <Divider
-                            orientation="vertical"
-                            flexItem
-                            sx={{
-                                bgcolor: "grey.main",
-                                padding: ".3px",
-                                marginLeft: "0px"
-                            }} />
-                        <Box color={"grey.main"}>
-                            <FavoriteBorderIcon />
-                        </Box>
-                        <Typography variant="body2" fontWeight={600}>
-                            My Favorite
-                        </Typography>
-                        <Typography variant="body2" color={"grey.main"} fontWeight={600}>
-                            0
-                        </Typography>
-                        <Divider
-                            orientation="vertical"
-                            flexItem
-                            sx={{
-                                bgcolor: "grey.main",
-                                padding: ".3px",
-                                marginRight: "0px"
-                            }} />
+                        <Link href="/favorite" >
+                            <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
+                                <Divider
+                                    orientation="vertical"
+                                    flexItem
+                                    sx={{
+                                        bgcolor: "grey.main",
+                                        padding: ".3px",
+                                        marginLeft: "0px"
+                                    }} />
+                                <Box color={"grey.main"} sx={{ margin: "0 10px" }}>
+                                    <FavoriteBorderIcon />
+                                </Box>
+                                <Typography variant="body2" color="#000000" fontWeight={600}>
+                                    My Favorite
+                                </Typography>
+                                <Typography variant="body2" color={"grey.main"} fontWeight={600} sx={{ margin: "0 10px" }}>
+                                    {favoriteValue.length}
+                                </Typography>
+                                <Divider
+                                    orientation="vertical"
+                                    flexItem
+                                    sx={{
+                                        bgcolor: "grey.main",
+                                        padding: ".3px",
+                                        marginRight: "0px"
+                                    }} />
+                            </Box>
+                        </Link>
                     </Grid>
                     <Grid item sx={{ display: "flex", width: "10%", justifyContent: "space-evenly" }}>
                         <LocalMallIcon />
@@ -180,9 +187,8 @@ const Header = () => {
                             My Cart
                         </Typography>
                         <Typography variant="body2" color={"grey.main"} fontWeight={600}>
-                            0
+                            {cartValue.length}
                         </Typography>
-
                     </Grid>
                 </Grid>
             </div>

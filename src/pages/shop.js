@@ -10,6 +10,7 @@ import { useEffect, useState } from "react"
 const Shop = () => {
     const { watches } = useSelector((state) => state.filter);
     const dispatch = useDispatch();
+    console.log(watches)
     const [filters, setFilters] = useState({
         BRAND: [],
         PRICE: [],
