@@ -9,8 +9,6 @@ import Product from "@/component/product";
 import { useState } from "react"
 const Detail = () => {
     const { Detail } = useSelector((state) => state.filter);
-    console.log(Detail)
-    // const item = Detail && Watches[Detail.name]["src"];
     const item = Watches[Detail.name]["src"];
     const item1 = Watches[Detail.name];
     const [nav1, setNav1] = useState(999);
@@ -38,7 +36,7 @@ const Detail = () => {
                     <Typography variant="h6" my={1} fontWeight={600} color="primary.main">{item1.price} ₹</Typography>
                     <Typography fontWeight={600} my={1} color="grey.main">SKU: N/A</Typography>
                     <Typography display={"flex"} my={1} fontWeight={600} color="grey.main">CATEGORIES: {item1?.categories?.map((db) => <Typography fontWeight={600} color="grey.main" display={"flex"} >&nbsp;{db}</Typography>)}</Typography>
-                    <Typography display={"flex"} my={1} fontWeight={600} color="grey.main">TAGS: {item1?.tags?.map((db) => <Typography fontWeight={600} color="grey.main" display={"flex"} >&nbsp;{db}</Typography>)}</Typography>
+                    <Typography display={"flex"} my={1} fontWeight={600} color="grey.main">TAGS: {item1?.tags?.map((db, idx) => <Typography fontWeight={600} color="grey.main" display={"flex"} key={idx}>&nbsp;{db}</Typography>)}</Typography>
                     <Typography fontWeight={400} mt={4} mb={10} color="grey.main">{item1?.description}</Typography>
                     <Stack direction={"row"} gap={"3em"}>
                         <Button
