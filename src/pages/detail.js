@@ -33,7 +33,7 @@ const Detail = () => {
                 </Box>
                 <Box sx={{ width: "50%", }} mt={14}>
                     <Typography variant="h4" my={1} fontWeight={600}>BOLD ROUND ANALOG GUNMETAL DIAL</Typography>
-                    <Typography variant="h6" my={1} fontWeight={600} color="primary.main">{item1.price} ₹</Typography>
+                    <Typography variant="h6" my={1} fontWeight={600} color="primary.main">{item1?.price} ₹</Typography>
                     <Typography fontWeight={600} my={1} color="grey.main">SKU: N/A</Typography>
                     <Typography display={"flex"} my={1} fontWeight={600} color="grey.main">CATEGORIES: {item1?.categories?.map((db, idx) => <Typography key={idx} fontWeight={600} color="grey.main" display={"flex"} >&nbsp;{db}</Typography>)}</Typography>
                     <Typography display={"flex"} my={1} fontWeight={600} color="grey.main">TAGS: {item1?.tags?.map((db, idx) => <Typography fontWeight={600} color="grey.main" display={"flex"} key={idx}>&nbsp;{db}</Typography>)}</Typography>
