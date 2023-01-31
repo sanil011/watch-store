@@ -9,7 +9,7 @@ import Product from "@/component/product";
 import { useState } from "react"
 const Detail = () => {
     const { Detail } = useSelector((state) => state.filter);
-    const item = Watches[Detail.name]["src"];
+    const item = Detail && Watches[Detail.name]["src"];
     const item1 = Watches[Detail.name];
     const [nav1, setNav1] = useState(999);
     const [activeTab, setActiveTab] = useState("description");
@@ -122,14 +122,3 @@ const Detail = () => {
 }
 
 export default Detail
-            // <Box>
-            //     <Box display={"flex"}>
-            //         <Box sx={{ position: "relative", width: "50%", border: "1px solid grey" }}>
-            //             <img src={item[0]} style={{ objectFit: "contain", width: "90%", }} />
-            //         </Box>
-            //         <Box sx={{ width: "50%", padding: "5em 3em" }}>
-            //             <Typography fontWeight={600}>DESCRIPTION</Typography>
-            //             <Typography my={1} color="grey.main" variant="body2">{item1?.description}</Typography>
-            //         </Box>
-            //     </Box>
-            // </Box>
