@@ -8,11 +8,27 @@ import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import Sidebar from "./sidebar";
 const Header = () => {
     const { cartValue } = useSelector((state) => state.cart)
     const { favoriteValue } = useSelector((state) => state.favorite)
     const router = useRouter();
+    const [sideBar, setSideBar] = useState({
+        open: false,
+        side: "left",
+    });
+
+    const sideBarHandler = () =>
+        setSideBar(
+            (prev) =>
+            (prev = {
+                open: false,
+                side: "top",
+            })
+        );
+
     return (
         <div>
             <div style={{
@@ -181,7 +197,15 @@ const Header = () => {
                             </Box>
                         </Link>
                     </Grid>
-                    <Grid item sx={{ display: "flex", width: "10%", justifyContent: "space-evenly" }}>
+                    <Grid item onClick={() =>
+                        setSideBar(
+                            (prev) =>
+                            (prev = {
+                                open: true,
+                                side: "right",
+                            })
+                        )
+                    } sx={{ display: "flex", width: "10%", justifyContent: "space-evenly" }}>
                         <LocalMallIcon />
                         <Typography variant="body2" fontWeight={600}>
                             My Cart
@@ -192,6 +216,11 @@ const Header = () => {
                     </Grid>
                 </Grid>
             </div>
+            <Sidebar
+                open={sideBar.open}
+                close={sideBarHandler}
+                anchor={sideBar.side}
+            />
         </div>
     )
 }

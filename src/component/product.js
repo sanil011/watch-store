@@ -19,7 +19,7 @@ const Product = (name) => {
     }
 
     const handleClickCart = () => {
-        dispatch(cartActions.cart(name))
+        dispatch(cartActions.cart({ name: name.name, price: +item?.price }))
     }
     const handleClickFavorite = () => {
         dispatch(favoriteActions.favorite(name))

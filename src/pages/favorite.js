@@ -145,7 +145,7 @@ const Favorite = () => {
                                     }}
                                     onClick={() => {
                                         dispatch(favoriteActions.removeItem(db));
-                                        dispatch(cartActions.cart(db))
+                                        dispatch(cartActions.cart({ name: db, price: +Watches[db]["price"] }))
                                     }}
                                 >
                                     {cartValue.indexOf(db) === -1 && (
