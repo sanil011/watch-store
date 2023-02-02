@@ -42,7 +42,7 @@ const Sidebar = ({ open, close, anchor }) => {
                                     >
                                         <Typography
                                             variant="subtitle2"
-                                            color={router.pathname == "/" ? "primary.main" : (router.pathname === `/${text.toLowerCase()}` ? "primary.main" : "primary.main")}
+                                            color={router.pathname == "/" ? "primary.main" : "grey.main"}
                                             fontSize={12}
                                         >
                                             {text}

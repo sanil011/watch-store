@@ -55,7 +55,6 @@ const Header = () => {
                         <Grid item
                             sx={{ alignItems: "center", width: `${isTablet ? "30%" : "18%"}` }}
                         >
-
                             <Stack direction="row"
                                 spacing={1}
                                 sx={{ fontWeight: 'medium', flexWrap: "wrap" }}>
@@ -287,7 +286,7 @@ const Header = () => {
                                 side: "right",
                             })
                         )
-                    } sx={{ display: "flex", width: `${isTablet ? "15%" : "10%"}`, justifyContent: "space-evenly" }}>
+                    } sx={{ cursor: "pointer", display: "flex", width: `${isTablet ? "15%" : "10%"}`, justifyContent: "space-evenly" }}>
                         <LocalMallIcon />
                         <Typography variant="body2" fontWeight={600}>
                             My Cart
@@ -330,7 +329,7 @@ const Header = () => {
                                         side: "right",
                                     })
                                 )
-                            } sx={{ display: "flex", justifyContent: "space-around", padding: "4px 0", alignItems: "center", gap: ".5em" }}>
+                            } sx={{ display: "flex", cursor: "pointer", justifyContent: "space-around", padding: "4px 0", alignItems: "center", gap: ".5em" }}>
                                 <LocalMallIcon />
                                 <Typography fontSize={`${isMobile && "12px"}`} variant="body2" fontWeight={600}>
                                     My Cart

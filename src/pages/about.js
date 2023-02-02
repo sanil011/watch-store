@@ -2,14 +2,21 @@ import React from 'react'
 import Image from 'next/image';
 import About1 from "../assets/about-1.jpg";
 import About2 from "../assets/about-2.jpg";
-import { Typography, List, ListItem, ListItemText } from "@mui/material";
+import { Typography, List, Grid, Box, ListItem, ListItemText } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 const About = () => {
     return (
-        <div style={{ display: "flex", justifyContent: "space-between", padding: "1em" }}>
-            <div style={{ position: "relative", width: "50%" }}>
-                <Image src={About1} width={700} height={600} alt="about1" />
+        <Grid container p={1} gap={{ xs: 1, sm: 0, md: 0 }} sx={{ justifyContent: "space-between", }}>
+            <Grid item xs={12} sm={12} md={6} flexDirection={"column"} rowGap={5}>
+                <div style={{ overflow: "hidden", paddingRight: "10px", textAlign: "center" }}>
+                    <Image src={About1} sx={{
+                        width: "100%",
+                        height: "100%",
+
+                    }} alt="about1" />
+                </div>
+
                 <Typography py={2} variant='h4' fontWeight={600} lineHeight={2}>
                     BACKGROUND
                 </Typography>
@@ -118,9 +125,14 @@ const About = () => {
                         </ListItemText>
                     </ListItem>
                 </List>
-            </div>
-            <div style={{ position: "relative", width: "50%" }}>
-                <Image src={About2} width={700} height={600} alt="about2" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} position={"relative"} >
+                <div style={{ position: "relative", minHeight: "400px", overflow: "hidden", textAlign: "center" }}>
+                    <Image src={About2} sx={{
+                        maxWidth: "100%",
+                        minHeight: "100%",
+                    }} alt="about1" />
+                </div>
                 <Typography variant="h4" py={3.5} color="secondary.main" fontWeight={700}>
                     BE STYLISH!
                 </Typography>
@@ -187,8 +199,8 @@ const About = () => {
                 >
                     lorem@lorem.com
                 </Typography>
-            </div>
-        </div>
+            </Grid>
+        </Grid>
     )
 }
 

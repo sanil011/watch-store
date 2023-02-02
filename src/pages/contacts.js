@@ -30,22 +30,24 @@ const Contacts = () => {
                 </Typography>
             </Stack>
 
-            <Stack direction={"row"} gap={8} sx={{ margin: "5em 3em 5em 1em" }}>
-                <Stack gap={3} sx={{ width: "50%", paddingTop: "1.5em" }}>
-                    <TextField label="Name"
-                        size="small"
-                        variant="outlined"
-                        placeholder="Please Enter Your Name" required />
-                    <TextField label="Email"
-                        size="small"
-                        variant="outlined"
-                        placeholder="Please Enter Your Phone Number" required />
-                    <TextField label="Phone"
-                        size="small"
-                        variant="outlined"
-                        placeholder="Please Enter Your Email" required />
-                </Stack>
-                <Stack sx={{ width: "50%" }}>
+            <Grid container >
+                <Grid item xs={12} sm={6} sx={{ paddingTop: "1.5em" }}>
+                    <Stack direction={"column"} gap={3} mx={4}>
+                        <TextField label="Name"
+                            size="small"
+                            variant="outlined"
+                            placeholder="Please Enter Your Name" required />
+                        <TextField label="Email"
+                            size="small"
+                            variant="outlined"
+                            placeholder="Please Enter Your Phone Number" required />
+                        <TextField label="Phone"
+                            size="small"
+                            variant="outlined"
+                            placeholder="Please Enter Your Email" required />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} sm={6} m={{ xs: 1, sm: 0 }}>
                     <label htmlFor="review" style={{ fontSize: "0.9rem" }}>
                         Message *
                     </label>
@@ -82,8 +84,8 @@ const Contacts = () => {
                     >
                         SEND MESSAGE
                     </Button>
-                </Stack>
-            </Stack>
+                </Grid>
+            </Grid>
         </>
     )
 }

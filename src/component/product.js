@@ -4,8 +4,8 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import { Watches } from "../store/watches";
 import { useState, Fragment } from "react";
 import { filterActions } from "@/store/filterSlice";
-import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from "@/store/cartSlice";
 import { favoriteActions } from "@/store/favoriteSlice";
 import CheckIcon from "@mui/icons-material/Check";

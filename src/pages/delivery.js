@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Stack, Divider } from "@mui/material";
+import { Typography, Stack, Divider, Grid } from "@mui/material";
 const Delivery = () => {
     return (
         <div>
@@ -11,9 +11,8 @@ const Delivery = () => {
                     See below for information about the delivery & returns options in your country.
                 </Typography>
             </div>
-            <div style={{ display: "flex", padding: "0 3em", marginBottom: "4em", justifyContent: "space-between", gap: "4em" }}>
-                <div style={{ width: "50%", borderTop: "1.2px solid grey", borderBottom: "1.2px solid grey" }}>
-
+            <Grid container sx={{ padding: "0 3em", marginBottom: "4em", justifyContent: "space-between" }}>
+                <Grid item xs={12} sm={5} style={{ borderTop: "1.2px solid grey", borderBottom: "1.2px solid grey" }}>
                     <Stack direction={"row"} mt={3} justifyContent={"space-between"}>
                         <Typography fontWeight={600} variant="h6">
                             STANDARD DELIVERY
@@ -50,10 +49,10 @@ const Delivery = () => {
                             Details available in checkout.
                         </Typography>
                     </Stack>
-                </div>
+                </Grid>
 
 
-                <div style={{ width: "50%", borderTop: "1.2px solid grey", borderBottom: "1.2px solid grey" }}>
+                <Grid item xs={12} sm={5} sx={{ borderTop: "1.2px solid grey", borderBottom: "1.2px solid grey" }}>
                     <Stack direction={"row"} mt={3} justifyContent={"space-between"}>
                         <Typography fontWeight={600} variant="h6">
                             EXPRESS DELIVERY
@@ -90,9 +89,9 @@ const Delivery = () => {
                             Details available in checkout.
                         </Typography>
                     </Stack>
-                </div>
+                </Grid>
 
-            </div>
+            </Grid>
         </div>
     )
 }
