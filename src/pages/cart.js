@@ -15,6 +15,7 @@ import {
     MenuItem,
     TextField,
     Button,
+    Grid
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
@@ -67,8 +68,8 @@ const Cart = () => {
                 )}
 
                 {!!cartValue.length && (
-                    <Box display={"flex"} sx={{ justifyContent: "space-between" }}>
-                        <Box width={"62%"}>
+                    <Grid container justifyContent={"space-between"} >
+                        <Grid item xs={12} sm={12} md={8}>
                             <Stack flex={1}
                                 rowGap={"1rem"}>
                                 <Typography
@@ -223,7 +224,7 @@ const Cart = () => {
                                                 },
                                             }}
                                         >
-                                            £{Watches[item]["price"]}
+                                            ₹{Watches[item]["price"]}
                                         </CardContent>
                                         <IconButton
                                             onClick={() =>
@@ -245,12 +246,13 @@ const Cart = () => {
                                     </Card>
                                 ))}
                             </Stack>
-                        </Box>
-                        <Stack
-                            width={{
-                                md: "35%",
-                                xs: "100%",
-                            }}
+                        </Grid>
+                        <Grid item
+                            xs={12} sm={12} md={4}
+                            // width={{
+                            //     md: "35%",
+                            //     xs: "100%",
+                            // }}
                             mt={{
                                 md: "0",
                                 xs: "1rem",
@@ -486,8 +488,8 @@ const Cart = () => {
                                     </Button>
                                 </CardContent>
                             </Card>
-                        </Stack>
-                    </Box>
+                        </Grid>
+                    </Grid>
                 )}
             </Paper>
         </Box>
