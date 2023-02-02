@@ -1,6 +1,6 @@
-import Head from 'next/head'
+import { useState, useEffect } from "react"
 import Image from 'next/image'
-import { Typography, Divider, Box, Stack, Button } from "@mui/material";
+import { Typography, Divider, Box, Stack, Button, Grid } from "@mui/material";
 import Swiper from "../component/swiper";
 import Product from "../component/product";
 import brand1 from "../assets/brand-logo-1.jpg";
@@ -12,6 +12,7 @@ import brand6 from "../assets/brand-logo-6.jpg";
 import brand7 from "../assets/Rectangle.jpg";
 import Her from "../assets/for-her.jpg";
 import Him from "../assets/for-him.jpg";
+import { grey } from "@mui/material/colors";
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
@@ -19,11 +20,23 @@ import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 export default function Home() {
   const brand = [brand1, brand2, brand3, brand4, brand5, brand6];
+  const [isTablet, setIsTablet] = useState("");
+
+  const [isMobile, setIsMobile] = useState("");
+
+  useEffect(() => {
+    window
+      .matchMedia("(max-width:992px)")
+      .addEventListener("change", (e) => setIsTablet(e.matches));
+    window
+      .matchMedia("(max-width:768px)")
+      .addEventListener("change", (e) => setIsMobile(e.matches));
+  }, []);
   return (
     <div>
 
       <Swiper />
-      <Box display="flex" justifyContent="space-between" marginY="50px">
+      <Box display="flex" flexDirection={`${isTablet ? "column" : "row"}`} gap={`${isTablet ? "2em" : "0"}`} justifyContent="space-between" marginY="50px">
         {brand?.map((db, idx) => (
           <Stack key={idx} justifyContent={"center"} alignItems={"center"}>
             <Image key={idx} src={db} alt="" />
@@ -40,18 +53,50 @@ export default function Home() {
         TREND WATCHES
       </Typography>
 
-      <div style={{ display: "flex" }}>
-        <Product name="BOLD ROUND ANALOG GUNMETAL DIAL" />
 
-        <Product name={"DAPPER ROUND ANALOG"} />
 
-        <Product name={"ROUND ANALOG WHITE & BEE DIAL LADIES"} />
+      <Grid container>
+        <Grid item xs={12} sm={6} md={3}>
+          <Product name={"BOLD ROUND ANALOG GUNMETAL DIAL"} />
+          <Divider
+            sx={{
+              bgcolor: "grey.main",
+              padding: ".2px"
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Product name={"ROUND ANALOG WHITE & BEE DIAL LADIES"} />
+          <Divider
+            sx={{
+              bgcolor: "grey.main",
+              padding: ".2px"
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Product name={"ROUND ANALOG WHITE DIAL LADIES"} />
+          <Divider
+            sx={{
+              bgcolor: "grey.main",
+              padding: ".2px"
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Product name={"BOLD ROUND ANALOG GUNMETAL DIAL"} />
+          <Divider
+            sx={{
+              bgcolor: "grey.main",
+              padding: ".2px"
+            }}
+          />
+        </Grid>
+      </Grid>
 
-        <Product name={"ROUND ANALOG WHITE DIAL LADIES"} />
-      </div>
 
-      <div style={{ display: "flex", width: "100%", height: "calc(100vh - 150px)" }}>
-        <div style={{ width: "50%", textAlign: "center", margin: "auto 0" }}>
+      <div style={{ display: "flex", flexDirection: `${isTablet ? "column" : "row"}`, width: "100%", minHeight: "calc(100vh - 350px)" }}>
+        <div style={{ width: `${isTablet ? "100%" : "50%"}`, textAlign: "center", margin: "auto 0" }}>
           <Typography
             color={"primary.main"}
             my={2}>
@@ -70,10 +115,12 @@ export default function Home() {
             GET A DISCOUNT →
           </Typography>
         </div>
-        <div style={{ position: "relative", width: "50%" }}>
+        <div style={isTablet ? { position: "relative", width: `${isTablet ? "100%" : "50%"}`, height: "600px" } : { position: "relative", width: `${isTablet ? "100%" : "50%"}` }}>
           <Image
             src={brand7}
-            style={{ width: "100%", minHeight: "100%" }}
+            style={{
+              width: "100%", minHeight: "100%"
+            }}
             alt=""
             fill
           />
@@ -98,10 +145,25 @@ export default function Home() {
 
       {/* FOR HER AND HIM */}
       <div>
-        <div style={{ display: "flex", width: "100%", height: "calc(100vh - 350px)" }}>
 
-          <div style={{ position: "relative", width: "50%", borderRight: ".8px solid grey" }}>
-            <Box zIndex="999" position={"absolute"} marginLeft={"35em"} marginTop={"15em"}>
+        <Grid container >
+          <Grid item
+            sx={{
+              borderColor: `${grey[500]} !important`,
+            }}
+            md={6}
+            xs={12}
+            justifyContent={"center"}
+            alignItems={"center"}
+            borderTop={1}
+            borderRight={{
+              md: 1,
+              xs: "none",
+            }}
+            position={"relative"}
+            minHeight={"calc(100vh - 250px)"}
+          >
+            <Box zIndex="999" position={"absolute"} marginLeft={"70%"} marginTop={"15em"}>
               <div style={{ display: "flex" }}>
                 <Typography variant='h4' fontFamily={"Barlow Condensed"}
                   fontStyle="italic">for</Typography>
@@ -122,9 +184,25 @@ export default function Home() {
               alt=""
               fill
             />
-          </div>
 
-          <div style={{ position: "relative", width: "50%" }}>
+          </Grid>
+
+
+          <Grid item
+            sx={{
+              borderColor: `${grey[500]} !important`,
+            }}
+            md={6}
+            xs={12}
+            justifyContent={"center"}
+            alignItems={"center"}
+            borderTop={1}
+            borderRight={{
+              md: 1,
+              xs: "none",
+            }}
+            minHeight={"calc(100vh - 250px)"}
+            position={"relative"}>
             <Box zIndex="999" position={"absolute"} marginTop={"15em"} marginLeft={"4em"}>
               <div style={{ display: "flex" }}>
                 <Typography variant='h4' fontFamily={"Barlow Condensed"}
@@ -146,14 +224,20 @@ export default function Home() {
               alt=""
               fill
             />
-          </div>
-        </div>
+          </Grid>
+
+        </Grid>
+
+
 
         {/* SERVICES */}
-        <div style={{ width: "100%", backgroundColor: "#212121", display: "flex" }}>
+
+        <div style={{ width: "100%", backgroundColor: "#212121", display: "flex", flexDirection: `${isTablet ? "column" : "row"}` }}>
           <div style={{
-            width: "25%", color: "#fff",
-            display: "flex", alignItems: "center", justifyContent: "center", borderRight: ".3px solid grey"
+            width: `${isTablet ? "100%" : "25%"}`, color: "#fff",
+            display: "flex", alignItems: "center", justifyContent: "center", borderRight: ".3px solid grey",
+            borderBottom: `${isTablet ? "1px solid grey" : "0"}`,
+            padding: `${isTablet ? "1em 0" : "0"}`
           }}>
             <LocalShippingIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
             <div>
@@ -167,8 +251,10 @@ export default function Home() {
           </div>
 
           <div style={{
-            width: "25%", color: "#fff",
-            display: "flex", alignItems: "center", justifyContent: "center", borderRight: ".3px solid grey"
+            width: `${isTablet ? "100%" : "25%"}`, color: "#fff",
+            display: "flex", alignItems: "center", justifyContent: "center", borderRight: ".3px solid grey",
+            borderBottom: `${isTablet ? "1px solid grey" : "0"}`,
+            padding: `${isTablet ? "1em 0" : "0"}`
           }}>
             <CurrencyRupeeIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
             <div>
@@ -182,8 +268,10 @@ export default function Home() {
           </div>
 
           <div style={{
-            width: "25%", color: "#fff",
-            display: "flex", alignItems: "center", justifyContent: "center", borderRight: ".3px solid grey"
+            width: `${isTablet ? "100%" : "25%"}`, color: "#fff",
+            display: "flex", alignItems: "center", justifyContent: "center", borderRight: ".3px solid grey",
+            borderBottom: `${isTablet ? "1px solid grey" : "0"}`,
+            padding: `${isTablet ? "1em 0" : "0"}`
           }}>
             <AdminPanelSettingsOutlinedIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
             <div>
@@ -197,8 +285,9 @@ export default function Home() {
           </div>
 
           <div style={{
-            width: "25%", color: "#fff",
-            display: "flex", alignItems: "center", padding: "20px 0", justifyContent: "center"
+            width: `${isTablet ? "100%" : "25%"}`, color: "#fff",
+            display: "flex", alignItems: "center", padding: "20px 0", justifyContent: "center",
+            padding: `${isTablet ? "1em 0" : "0"}`
           }}>
             <SupportAgentIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
             <div>
@@ -230,32 +319,44 @@ export default function Home() {
         }}
       />
 
-
-      <div style={{ display: "flex" }}>
-        <Product name={"ROUND ANALOG WHITE & BEE DIAL LADIES"} />
-        <Divider
-          sx={{
-            bgcolor: "grey.main",
-            padding: ".3px"
-          }}
-        />
-        <Product name={"THE RUNWELL SPORT CHRONO"} />
-        <Divider
-          sx={{
-            bgcolor: "grey.main",
-            padding: ".3px"
-          }}
-        />
-        <Product name={"TATUM ROUND ANALOG BLUE DIAL LADIES"} />
-        <Divider
-          sx={{
-            bgcolor: "grey.main",
-            padding: ".3px"
-          }}
-        />
-        <Product name={"BOLD ROUND ANALOG GUNMETAL DIAL"} />
-      </div>
-
+      <Grid container>
+        <Grid item xs={12} sm={6} md={3}>
+          <Product name={"ROUND ANALOG WHITE & BEE DIAL LADIES"} />
+          <Divider
+            sx={{
+              bgcolor: "grey.main",
+              padding: ".2px"
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Product name={"THE RUNWELL SPORT CHRONO"} />
+          <Divider
+            sx={{
+              bgcolor: "grey.main",
+              padding: ".2px"
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Product name={"TATUM ROUND ANALOG BLUE DIAL LADIES"} />
+          <Divider
+            sx={{
+              bgcolor: "grey.main",
+              padding: ".2px"
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Product name={"BOLD ROUND ANALOG GUNMETAL DIAL"} />
+          <Divider
+            sx={{
+              bgcolor: "grey.main",
+              padding: ".2px"
+            }}
+          />
+        </Grid>
+      </Grid>
 
     </div>
   )

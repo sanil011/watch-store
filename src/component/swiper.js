@@ -7,7 +7,7 @@ import Pic2 from "../assets/slide-2.jpg"
 import Pic3 from "../assets/slide-3.jpg"
 import { useState } from 'react'
 import { keyframes } from "@emotion/react";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import { Pagination, A11y, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -35,8 +35,19 @@ const Swipers = () => {
             onSlideChange={() => setCurrentSlide(currentSlide)}
             slidesPerView={1}>
             <SwiperSlide>
-                <div style={{ display: "flex", position: "relative", width: "100%", overflow: "hidden", height: "calc(100vh - 120px)" }}>
-                    <Box zIndex="999" marginTop={28} marginLeft={10}
+                <Box sx={{
+                    display: "flex", position: "relative",
+                    "& img": {
+                        width: {
+                            md: "100%",
+                            sm: "150%",
+                            xs: "230%",
+                        }
+                    },
+                    width: "100%", overflow: "hidden", height: "calc(100vh - 125px)"
+                }}>
+                    <Box zIndex="999"
+                        marginTop={{ xs: 10, md: 28 }} marginLeft={{ xs: 5, md: 10 }}
                         sx={{
                             animation: `${currentSlide ? `${myEffect} 400ms ease-in 1 forwards` : ""
                                 }`,
@@ -44,13 +55,37 @@ const Swipers = () => {
                             transform: "translateY(80px)",
                         }}
                     >
-                        <Typography color={"primary.main"}>
+                        <Typography color={"primary.main"}
+                            fontSize={{
+                                md: "1rem",
+                                sm: "0.8rem",
+                                xs: "0.6rem",
+                            }}
+                        >
                             CONSECTETUER ADIPISCING ELIT
                         </Typography>
-                        <Typography variant='h2' width={"60%"} fontWeight={"bold"}>
+                        <Typography variant='h2'
+                            width={"60%"}
+                            letterSpacing={{
+                                md: -3,
+                                sm: -2,
+                                xs: 0,
+                            }}
+                            fontWeight={"bold"}
+                            fontSize={{
+                                md: "3.75rem",
+                                sm: "2.8rem",
+                                xs: "1.5rem",
+                            }} >
                             GREAT WATCH FROM THE WATRIX
                         </Typography>
-                        <Typography color={grey[500]}>
+                        <Typography
+                            fontSize={{
+                                md: "1rem",
+                                sm: "0.8rem",
+                                xs: "0.6rem",
+                            }}
+                            color={grey[500]}>
                             Highlight your status and style
                         </Typography>
                         <Button
@@ -70,11 +105,14 @@ const Swipers = () => {
                         </Button>
                     </Box>
                     <Image src={Pic1} fill />
-                </div>
+                    {/* <img src={Pic1} alt="" /> */}
+
+                </Box>
             </SwiperSlide>
             <SwiperSlide>
-                <div style={{ display: "flex", position: "relative", width: "100%", overflow: "hidden", height: "calc(100vh - 120px)" }}>
-                    <Box zIndex="999" marginTop={28} marginLeft={10}
+                <Box sx={{ display: "flex", position: "relative", width: "100%", overflow: "hidden", height: "calc(100vh - 120px)" }}>
+
+                    <Box zIndex="999" marginTop={{ xs: 10, md: 28 }} marginLeft={{ xs: 5, md: 10 }}
                         sx={{
                             animation: `${currentSlide ? `${myEffect} 400ms ease-in 1 forwards` : ""
                                 }`,
@@ -82,13 +120,38 @@ const Swipers = () => {
                             opacity: 0,
                             transform: "translateY(80px)",
                         }}>
-                        <Typography color={"primary.main"}>
+                        <Typography
+                            color={"primary.main"}
+                            fontSize={{
+                                md: "1rem",
+                                sm: "0.8rem",
+                                xs: "0.6rem",
+                            }}
+                        >
                             CONSECTETUER ADIPISCING ELIT
                         </Typography>
-                        <Typography variant='h2' width={"60%"} fontWeight={"bold"}>
+                        <Typography variant='h2'
+                            width={"60%"}
+                            letterSpacing={{
+                                md: -3,
+                                sm: -2,
+                                xs: 0,
+                            }}
+                            fontWeight={"bold"}
+                            fontSize={{
+                                md: "3.75rem",
+                                sm: "2.8rem",
+                                xs: "1.5rem",
+                            }}
+                        >
                             GREAT WATCH FROM THE WATRIX
                         </Typography>
-                        <Typography color={grey[500]}>
+                        <Typography
+                            fontSize={{
+                                md: "1rem",
+                                sm: "0.8rem",
+                                xs: "0.6rem",
+                            }} color={grey[500]}>
                             Highlight your status and style
                         </Typography>
                         <Button
@@ -108,24 +171,49 @@ const Swipers = () => {
                         </Button>
                     </Box>
                     <Image src={Pic2} fill />
-                </div>
+                </Box>
             </SwiperSlide>
             <SwiperSlide>
-                <div style={{ display: "flex", position: "relative", width: "100%", overflow: "hidden", height: "calc(100vh - 120px)" }}>
-                    <Box zIndex="999" marginTop={28} marginLeft={10}
+                <Box sx={{ display: "flex", position: "relative", width: "100%", overflow: "hidden", height: "calc(100vh - 120px)" }}>
+                    <Box zIndex="999" marginTop={{ xs: 10, md: 28 }} marginLeft={{ xs: 5, md: 10 }}
                         sx={{
                             animation: `${currentSlide ? `${myEffect} 400ms ease-in 1 forwards` : ""
                                 }`,
                             opacity: 0,
                             transform: "translateY(80px)",
                         }}>
-                        <Typography color={"primary.main"}>
+                        <Typography color={"primary.main"}
+                            fontSize={{
+                                md: "1rem",
+                                sm: "0.8rem",
+                                xs: "0.6rem",
+                            }}
+                        >
                             CONSECTETUER ADIPISCING ELIT
                         </Typography>
-                        <Typography variant='h2' width={"60%"} fontWeight={"bold"}>
+                        <Typography variant='h2'
+                            width={"60%"}
+                            letterSpacing={{
+                                md: -3,
+                                sm: -2,
+                                xs: 0,
+                            }}
+                            fontWeight={"bold"}
+                            fontSize={{
+                                md: "3.75rem",
+                                sm: "2.8rem",
+                                xs: "1.5rem",
+                            }}
+                        >
                             GREAT WATCH FROM THE WATRIX
                         </Typography>
-                        <Typography color={grey[500]}>
+                        <Typography
+                            fontSize={{
+                                md: "1rem",
+                                sm: "0.8rem",
+                                xs: "0.6rem",
+                            }}
+                            color={grey[500]}>
                             Highlight your status and style
                         </Typography>
                         <Button
@@ -145,9 +233,9 @@ const Swipers = () => {
                         </Button>
                     </Box>
                     <Image src={Pic3} fill />
-                </div>
+                </Box>
             </SwiperSlide>
-        </Swiper>
+        </Swiper >
     )
 }
 

@@ -206,12 +206,11 @@ const Tab1 = () => {
                 </Box>
             </Box>
 
-            <Box display={"flex"} sx={{
-                height: "calc(100vh - 200px)", borderBottom: "1px solid grey"
-            }} >
-                <Box sx={{ width: "50%", padding: "0 3em", margin: "auto 0px" }}>
-
-
+            <Box
+                sx={{
+                    display: "flex", height: "calc(100vh - 200px)", borderBottom: "1px solid grey"
+                }} >
+                <Box sx={{ width: "45%", margin: "auto " }}>
                     <Typography variant="subtitle1" color="secondary.main" fontWeight={700}>
                         DESCRIPTION
                     </Typography>
