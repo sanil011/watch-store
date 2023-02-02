@@ -1,12 +1,15 @@
-import { Box, Typography, Stack, Button, Tabs, Tab } from "@mui/material";
+import { Box, Typography, Stack, Button, Tabs, Tab, Grid, Divider } from "@mui/material";
 import { Watches } from '../store/watches';
-import { useSelector, useDispatch } from 'react-redux';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import DescriptionTab from "../component/Tab/tab1"
 import InfoTab from "../component/Tab/tab2"
 import Product from "@/component/product";
-import { useState } from "react"
+import { useDispatch, useSelector } from 'react-redux';
+import { cartActions } from "@/store/cartSlice";
+import { favoriteActions } from "@/store/favoriteSlice";
+import { useState, Fragment } from "react"
+import CheckIcon from "@mui/icons-material/Check";
 const Detail = () => {
     const { Detail } = useSelector((state) => state.filter);
     const item = Detail && Watches[Detail.name]["src"];
@@ -18,10 +21,27 @@ const Detail = () => {
         setActiveTab(newValue);
     };
 
+    const { cartValue } = useSelector((state) => state.cart);
+    const { favoriteValue } = useSelector((state) => state.favorite);
+    const isInCart = cartValue.indexOf(Detail.name) !== -1;
+    const isInFavorites = favoriteValue.indexOf(Detail.name) !== -1;
+    const dispatch = useDispatch();
+    const [show, setShow] = useState(false)
+    const handleClick = () => {
+        dispatch(filterActions.detail(Detail));
+        router.push('/detail');
+    }
+
+    const handleClickCart = () => {
+        dispatch(cartActions.cart({ name: Detail.name, price: +item1?.price }))
+    }
+    const handleClickFavorite = () => {
+        dispatch(favoriteActions.favorite(Detail))
+    }
     return (
         <div >
-            <div style={{ display: "flex", margin: "0 4em" }}>
-                <Box sx={{ width: "50%", }}>
+            <Grid container >
+                <Grid item xs={12} sm={6} md={6}>
                     <div style={{ width: "60%", height: "calc(100vh - 150px)", position: "relative", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                         {item && item?.map((db, idx) => (
                             <div key={idx} style={{ width: "35%", height: "100px", marginBottom: "20px", display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -30,9 +50,9 @@ const Detail = () => {
                             </div>
                         ))}
                     </div>
-                </Box>
-                <Box sx={{ width: "50%", }} mt={14}>
-                    <Typography variant="h4" my={1} fontWeight={600}>BOLD ROUND ANALOG GUNMETAL DIAL</Typography>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} mt={14} p={2}>
+                    <Typography variant="h4" my={1} fontWeight={600}>{Detail.name}</Typography>
                     <Typography variant="h6" my={1} fontWeight={600} color="primary.main">{item1?.price} ₹</Typography>
                     <Typography fontWeight={600} my={1} color="grey.main">SKU: N/A</Typography>
                     <Typography display={"flex"} my={1} fontWeight={600} color="grey.main">CATEGORIES: {item1?.categories?.map((db, idx) => <Typography key={idx} fontWeight={600} color="grey.main" display={"flex"} >&nbsp;{db}</Typography>)}</Typography>
@@ -52,11 +72,25 @@ const Detail = () => {
                                     backgroundColor: "secondary.main",
                                 },
                             }}
+                            onClick={() => handleClickCart()}
                         >
 
-                            <ShoppingCartOutlinedIcon
-                            />
-                            ADD TO CART
+                            {!isInCart && (
+                                <Fragment>
+                                    <ShoppingCartOutlinedIcon
+                                        sx={{ fontSize: { md: "1.5rem", sm: "1rem", xs: "1.5rem" } }}
+                                    />
+                                    ADD TO CART
+                                </Fragment>
+                            )}
+                            {isInCart && (
+                                <Fragment>
+                                    <CheckIcon
+                                        sx={{ fontSize: { md: "1.5rem", sm: "1rem", xs: "1.5rem" } }}
+                                    />
+                                    ADDED
+                                </Fragment>
+                            )}
 
                         </Button>
                         <Button
@@ -72,13 +106,14 @@ const Detail = () => {
                                     backgroundColor: "secondary.main",
                                 },
                             }}
+                            onClick={() => handleClickFavorite()}
                         >
 
                             <FavoriteBorderOutlinedIcon
                             />
                         </Button></Stack>
-                </Box>
-            </div>
+                </Grid>
+            </Grid>
 
 
 
@@ -107,15 +142,21 @@ const Detail = () => {
                     RECOMMENDED WATCHES
                 </Typography>
 
-                <div style={{ display: "flex" }}>
-                    <Product name="THE RUNWELL SPORT CHRONO SILVER" />
+                <Grid container>
+                    <Grid item xs={12} sm={6} md={3}>
+                        <Product name="THE RUNWELL SPORT CHRONO SILVER" />
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={3}>
+                        <Product name={"DAPPER ROUND ANALOG"} />
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={3}>
+                        <Product name={"ROUND ANALOG WHITE & BEE DIAL LADIES"} />
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={3}>
+                        <Product name={"ROUND ANALOG WHITE DIAL LADIES"} />
+                    </Grid>
+                </Grid>
 
-                    <Product name={"DAPPER ROUND ANALOG"} />
-
-                    <Product name={"ROUND ANALOG WHITE & BEE DIAL LADIES"} />
-
-                    <Product name={"ROUND ANALOG WHITE DIAL LADIES"} />
-                </div>
             </Box>
         </div>
     )

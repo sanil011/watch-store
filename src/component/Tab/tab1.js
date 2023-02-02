@@ -6,6 +6,7 @@ import {
     List,
     ListSubheader,
     ListItem,
+    Grid,
     ListItemText,
 } from "@mui/material";
 import Image from 'next/image'
@@ -18,12 +19,14 @@ import Right from "../../assets/single-2.jpg";
 const Tab1 = () => {
     return (
         <Fragment>
-            <Box display={"flex"} sx={{ height: "calc(100vh - 200px)", border: "1px solid grey" }}>
-                <div style={{ width: "50%", position: "relative", borderRight: "1px solid grey" }}>
-                    <Image src={Left} alt="" fill />
 
-                </div>
-                <Box sx={{ width: "50%", margin: "auto 3em" }}>
+            <Grid container sx={{ minHeight: "calc(100vh - 200px)", border: "1px solid grey" }}>
+                <Grid item xs={12} sm={6} md={6} minHeight={"400px"} position={"relative"} sx={{ borderRight: "1px solid grey" }}>
+                    <Image src={Left} alt="" fill />
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} sx={{
+                    margin: "auto 0", paddingLeft: "1em"
+                }}>
                     <Stack spacing={2}>
                         <Typography
                             variant="subtitle2"
@@ -40,7 +43,7 @@ const Tab1 = () => {
                     </Stack>
                     <List>
                         <ListSubheader
-                            disableGutters
+                            // disableGutters
                             sx={{
                                 color: "secondary.main",
                                 fontWeight: 700,
@@ -203,14 +206,16 @@ const Tab1 = () => {
                             </ListItemText>
                         </ListItem>
                     </List>
-                </Box>
-            </Box>
+                </Grid>
+            </Grid>
 
-            <Box
+            <Grid container
                 sx={{
-                    display: "flex", height: "calc(100vh - 200px)", borderBottom: "1px solid grey"
+                    minHeight: "calc(100vh - 200px)", borderBottom: "1px solid grey"
                 }} >
-                <Box sx={{ width: "45%", margin: "auto " }}>
+                <Grid item xs={12} sm={6} md={6} sx={{
+                    margin: "auto 0", paddingLeft: "1em", paddingBottom: "1em",
+                }}>
                     <Typography variant="subtitle1" color="secondary.main" fontWeight={700}>
                         DESCRIPTION
                     </Typography>
@@ -242,16 +247,12 @@ const Tab1 = () => {
                     >
                         <FacebookIcon /> <InstagramIcon /> <TwitterIcon />
                     </Stack>
-                </Box>
+                </Grid>
 
-                <div style={{ width: "50%", position: "relative", borderLeft: "1px solid grey", }}>
-                    <Image
-                        src={Right}
-                        alt=""
-                        fill
-                    />
-                </div>
-            </Box>
+                <Grid item xs={12} sm={6} md={6} minHeight={"400px"} position={"relative"} sx={{ borderLeft: "1px solid grey" }}>
+                    <Image src={Right} alt="" fill />
+                </Grid>
+            </Grid>
         </Fragment>
     )
 }

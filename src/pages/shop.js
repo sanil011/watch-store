@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography, Grid, Box } from "@mui/material";
 import { useSelector, useDispatch } from 'react-redux';
 import Product from "@/component/product";
 import BrandFilter from "@/component/shop/BrandFilter";
@@ -66,22 +66,28 @@ const Shop = () => {
         <div style={{ padding: "0 1em" }}>
             <Typography my={4} fontWeight={600} variant="h4" textAlign={"center"}>MEN&lsquo;S WATCHES</Typography>
             <div style={{ display: "flex", justifyContent: "space-between", gap: "2em" }}>
-                <div style={{ width: "25%" }}>
+                <Box sx={{ width: "25%", top: "2em" }} position={{
+                    sm: "sticky",
+                    xs: "static",
+                }} >
                     <BrandFilter onChange={onBrandsChange} />
                     <PriceFilter onChange={onPriceChange} />
                     <StrapFilter onChange={onStrapChange} />
                     <ColorFilter onChange={onColorChange} />
-                </div>
-                <div style={{ width: "75%", display: "flex", flexWrap: "wrap" }}>
+                </Box>
+
+                <Grid container>
                     {watches.map((db, idx) => (
-                        <div key={idx} style={{ width: "33.33%" }}>
+                        <Grid key={idx} item xs={12} sm={6} md={4}>
                             <Product name={db} />
-                        </div>
+                        </Grid>
                     ))}
-                </div>
+                </Grid>
             </div>
         </div>
     )
 }
 
 export default Shop
+
+

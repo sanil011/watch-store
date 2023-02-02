@@ -227,7 +227,7 @@ const Header = () => {
                             }} />
                     </Grid>
 
-                    <Grid item sx={{ width: `${isMobile ? "70%" : "70%"}`, display: "flex", justifyContent: "center", alignContent: "center", padding: `${isMobile ? "4px 0" : "0em 0em"}` }}>
+                    <Grid item sx={{ width: `${isTablet ? "60%" : "70%"}`, display: "flex", justifyContent: "center", alignContent: "center", padding: `${isMobile ? "4px 0" : "0em 0em"}` }}>
                         <Stack direction="row" spacing={2}
                         >
                             <Link href='/shop' sx={{ textDecoration: "none" }}>
@@ -247,7 +247,7 @@ const Header = () => {
                             </Link>
                         </Stack>
                     </Grid>
-                    {!isMobile && <Grid item sx={{ display: "flex", width: "12%", justifyContent: "space-evenly" }}>
+                    {!isMobile && <Grid item sx={{ display: "flex", width: `${isTablet ? "17%" : "12%"}`, justifyContent: "space-evenly" }}>
                         <Link href="/favorite" >
                             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
                                 <Divider
@@ -287,7 +287,7 @@ const Header = () => {
                                 side: "right",
                             })
                         )
-                    } sx={{ display: "flex", width: "10%", justifyContent: "space-evenly" }}>
+                    } sx={{ display: "flex", width: `${isTablet ? "15%" : "10%"}`, justifyContent: "space-evenly" }}>
                         <LocalMallIcon />
                         <Typography variant="body2" fontWeight={600}>
                             My Cart
