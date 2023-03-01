@@ -133,7 +133,7 @@ const Footer = () => {
                     <Typography color={"grey.main"}>Sukhrali, M.G. Road </Typography>
                     <Typography color={"grey.main"}>Gurgaon - 122001</Typography>
                     <Typography color={"primary.main"} marginTop={1}>Phone:</Typography>
-                    <Typography color={"grey.main"} variant="body2" fontWeight={600}>+95 8510882843</Typography>
+                    <Typography color={"grey.main"} variant="body2" fontWeight={600}>+95 8510881234</Typography>
                     <Typography color={"primary.main"} marginTop={1}>Email:</Typography>
                     <Typography color={"grey.main"} variant="body2" fontWeight={600}>lorem@lorem.com</Typography>
 
