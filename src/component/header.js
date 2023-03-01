@@ -15,11 +15,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import { grey } from "@mui/material/colors";
 import Sidebar from "./sidebar";
 const Header = () => {
-    const [isTablet, setIsTablet] = useState(
-        ""
-    );
+    
 
-    const [isMobile, setIsMobile] = useState("");
+   
     const [isSearching, setIsSearching] = useState(false);
     const { cartValue } = useSelector((state) => state.cart)
     const { favoriteValue } = useSelector((state) => state.favorite)
@@ -40,14 +38,7 @@ const Header = () => {
 
     const handleToggle = () => setIsSearching((prev) => !prev);
 
-    useEffect(() => {
-        window
-            .matchMedia("(max-width:992px)")
-            .addEventListener("change", (e) => setIsTablet(e.matches));
-        window
-            .matchMedia("(max-width:768px)")
-            .addEventListener("change", (e) => setIsMobile(e.matches));
-    }, []);
+  
     return (
         <div>
             <div style={{
@@ -55,9 +46,11 @@ const Header = () => {
                 borderBottom: "1.2px solid gray"
             }}>
                 <Grid container width={"100%"} >
-                    {!isMobile && (
-                        <Grid item
-                            sx={{ alignItems: "center", width: `${isTablet ? "30%" : "18%"}` }}
+                    
+                    <Grid item
+                        display={{ xs: "none", sm: "flex", }} 
+                        width={{md:"20%",sm:"18%"}}
+                            sx={{ alignItems: "center" }}
                         >
                             <Stack direction="row"
                                 spacing={1}
@@ -79,10 +72,11 @@ const Header = () => {
                                         fontSize={12}>CONTACTS</Typography>
                                 </Link>
                             </Stack>
-                        </Grid>)}
+                        </Grid>
 
-                    {isMobile && (
-                        <div style={{ borderBottom: `${isMobile && "1px solid grey"}`, borderRight: `${isMobile && "1px solid grey"}`, width: `${isMobile && "8%"}` }}>
+                  
+                    <Grid item display={{ sm: "none" }}
+                        sx={{ borderBottom: "1px solid grey", borderRight: "1px solid grey", width: "8%" }}>
                             <IconButton
                                 sx={{}}
                                 onClick={() =>
@@ -97,15 +91,17 @@ const Header = () => {
                             >
                                 <MenuIcon />
                             </IconButton>
-                        </div>
-                    )}
+                        </Grid>
+                    
 
                     <Grid item
-                        sx={{ alignItems: "center", width: `${isMobile ? "92%" : isTablet ? "40%" : "72%"}`, borderBottom: `${isMobile && "1px solid grey"}` }}
+                        width={{ md: "70%", sm: "40%", xs: "90%" }}
+                        borderBottom={{ md: "none", xs:"1px solid grey"}}
+                        sx={{ alignItems: "center" }}
                     >
                         <Stack direction="row" sx={{ alignContent: "center", justifyContent: "center" }}
                         >
-                            {!isMobile && <Divider
+                             <Divider display={{xs:"none",sm:"flex"}}
                                 orientation="vertical"
                                 flexItem
                                 sx={{
@@ -113,7 +109,7 @@ const Header = () => {
                                     bgcolor: "grey.main",
                                     padding: ".3px"
                                 }}
-                            />}
+                            />
                             <Typography
                                 fontSize={12}
                                 fontWeight={400}
@@ -124,24 +120,26 @@ const Header = () => {
                                 <PhoneIphoneIcon />
                                 +95 8510882843
                             </Typography>
-                            {!isTablet &&
-                                <Typography
+                       
+                            <Typography
+                                display={{xs:"none",md:"flex"}}
                                     variant="h6"
                                     flex={1}
                                     color="primary.main"
-                                    textAlign={"center"}
+                                justifyContent={"center"}
                                     fontWeight={600}
                                     sx={{
                                         cursor: "pointer",
                                     }}
                                 >
                                     WATCHES E-SHOP
-                                </Typography>}
-                            {!isMobile &&
-                                <Typography>
+                                </Typography>
+                    
+                                <Typography display={{xs:"none",sm:"flex"}}>
                                     Login / Register
-                                </Typography>}
-                            {!isMobile && <Divider
+                                </Typography>
+                            <Divider
+                                display={{xs:"flex", sm: "none" }}
                                 orientation="vertical"
                                 flexItem
                                 sx={{
@@ -149,13 +147,15 @@ const Header = () => {
                                     marginLeft: "20px",
                                     padding: ".3px"
                                 }}
-                            />}
+                            />
                         </Stack>
 
                     </Grid>
 
-                    {!isMobile && <Grid item
-                        sx={{ width: `${isTablet ? "30%" : "10%"}` }}
+                    <Grid item
+                        display={{ xs: "none",sm:"flex" }}
+                        width={{md:"10%",sm:"30%"}}
+                        // sx={{ width: `${isTablet ? "30%" : "10%"}` }}
                     >
                         <div style={{
                             display: "flex",
@@ -170,10 +170,11 @@ const Header = () => {
                             <InstagramIcon />
                             <TwitterIcon />
                         </div>
-                    </Grid>}
+                    </Grid>
                 </Grid>
-                {isMobile &&
-                    <Box display={"flex"} justifyContent={"space-around"} sx={{ borderBottom: `${isMobile && "1px solid grey"}` }}>
+             
+                <Box display={{ xs: "flex", sm: "none" }} justifyContent={"space-around"}
+                    borderBottom={{ xs: "1px solid grey" }}>
                         <Typography py={2}>
                             Login / Register
                         </Typography>
@@ -196,11 +197,12 @@ const Header = () => {
                             <InstagramIcon />
                             <TwitterIcon />
                         </div>
-                    </Box>}
-                {isTablet && (
+                    </Box>
+               
                     <Typography
                         variant="h6"
                         color="primary.main"
+                        display={{md:"none"}}
                         textAlign={"center"}
                         // borderBottom={1}
                         fontWeight={600}
@@ -209,9 +211,8 @@ const Header = () => {
                             cursor: "pointer",
                         }}
                     >
-                        WATCHES E-SHOP
+                        WATCHES E-SHOP 
                     </Typography>
-                )}
             </div>
             <Backdrop
                 open={isSearching}
@@ -281,16 +282,19 @@ const Header = () => {
                     />
                 </Stack>
             </Backdrop>
-            <div style={{ borderBottom: "1.3px solid grey", padding: `${isMobile ? "0 0" : "10px 0"}` }}>
+            <div style={{ borderBottom: "1.3px solid grey" }}>
                 <Grid container>
-                    <Grid item sx={{
-                        width: `${isMobile ? "30%" : "8%"}`, display: "flex", justifyContent: "space-around", alignItems: "center", cursor: "pointer",
-                        padding: `${isMobile ? "4px 0" : "0em 0em"}`
+                    <Grid item
+                        width={{ xs: "30%", sm: "8%" }}
+                        padding={{ xs:"4px 0",sm:"0"}}
+                        sx={{
+                        display: "flex", justifyContent: "space-around",
+                        alignItems: "center", cursor: "pointer",
                     }}
                         onClick={handleToggle}
                     >
                         <SearchIcon />
-                        <Typography fontSize={`${isMobile && "12px"}`} fontWeight={`${isMobile ? 600 : 500}`} >
+                        <Typography fontSize={{ xs: "12px", sm: "16px" }} fontWeight={{xs:"600", md:"500"}} >
                             Search
                         </Typography>
                         <Divider orientation="vertical" flexItem
@@ -300,27 +304,27 @@ const Header = () => {
                             }} />
                     </Grid>
 
-                    <Grid item sx={{ width: `${isTablet ? "60%" : "70%"}`, display: "flex", justifyContent: "center", alignContent: "center", padding: `${isMobile ? "4px 0" : "0em 0em"}` }}>
+                    <Grid item width={{ xs: "70%", md: "60%" }} padding={{ xs: "4px 0", sm: "0" }} sx={{ display: "flex", justifyContent: "center", alignContent: "center" }}>
                         <Stack direction="row" spacing={2}
                         >
                             <Link href='/shop' sx={{ textDecoration: "none" }}>
-                                <Typography color="#000000" fontSize={`${isMobile && "12px"}`} fontWeight={`${isMobile && 600}`} >WOMEN</Typography>
+                                <Typography color="#000000" fontSize={{ xs: "12px", sm: "16px" }} fontWeight={{ xs: 600}} >WOMEN</Typography>
                             </Link>
                             <Link href='/shop'>
-                                <Typography fontSize={`${isMobile && "12px"}`} fontWeight={`${isMobile && 600}`} color="#000000">MEN</Typography>
+                                <Typography fontSize={{ xs: "12px",sm:"16px" }} fontWeight={{ xs: 600 }} color="#000000">MEN</Typography>
                             </Link>
                             <Link href='/shop'>
-                                <Typography fontSize={`${isMobile && "12px"}`} fontWeight={`${isMobile && 600}`} color="#000000">KIDS</Typography>
+                                <Typography fontSize={{ xs: "12px", sm: "16px" }} color="#000000">KIDS</Typography>
                             </Link>
                             <Link href='/shop'>
-                                <Typography fontSize={`${isMobile && "12px"}`} fontWeight={`${isMobile && 600}`} color="#000000">BRANDS</Typography>
+                                <Typography fontSize={{ xs: "12px", sm: "16px" }} color="#000000">BRANDS</Typography>
                             </Link>
                             <Link href='/shop'>
-                                <Typography fontSize={`${isMobile && "12px"}`} fontWeight={`${isMobile && 600}`} color="#000000">OFFERS</Typography>
+                                <Typography fontSize={{ xs: "12px", sm: "16px" }} color="#000000">OFFERS</Typography>
                             </Link>
                         </Stack>
                     </Grid>
-                    {!isMobile && <Grid item sx={{ display: "flex", width: `${isTablet ? "17%" : "12%"}`, justifyContent: "space-evenly" }}>
+                     <Grid item display={{ sm: "flex", xs: "none" }} justifyContent={"space-evenly"} width={{md:"17%",sm:"12%"}}>
                         <Link href="/favorite" >
                             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
                                 <Divider
@@ -350,9 +354,9 @@ const Header = () => {
                                     }} />
                             </Box>
                         </Link>
-                    </Grid>}
+                    </Grid>
 
-                    {!isMobile && <Grid item onClick={() =>
+                    <Grid item display={{xs:"none",sm:"flex"}}  onClick={() =>
                         setSideBar(
                             (prev) =>
                             (prev = {
@@ -360,25 +364,27 @@ const Header = () => {
                                 side: "right",
                             })
                         )
-                    } sx={{ cursor: "pointer", display: "flex", width: `${isTablet ? "15%" : "10%"}`, justifyContent: "space-evenly" }}>
+                    }
+                        width={{md: "15%",sm:"10%"}}
+                        sx={{ cursor: "pointer", justifyContent: "space-evenly" }}>
                         <LocalMallIcon />
                         <Typography variant="body2" fontWeight={600}>
-                            My Cart
+                            My Cart 
                         </Typography>
                         <Typography variant="body2" color={"grey.main"} fontWeight={600}>
                             {cartValue.length}
                         </Typography>
-                    </Grid>}
+                    </Grid>
 
-                    {isMobile &&
-                        <Box display={"flex"} justifyContent={"space-around"} sx={{ width: "100%", borderTop: "1px solid grey", }} >
+                    
+                        <Box display={{sm:"none"}}  justifyContent={"space-around"} sx={{ width: "100%", borderTop: "1px solid grey", }} >
                             <Box item sx={{ display: "flex", justifyContent: "space-evenly", padding: "4px 0" }}>
                                 <Link href="/favorite" >
                                     <Box sx={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
                                         <Box color={"grey.main"} sx={{ margin: "0 10px" }}>
                                             <FavoriteBorderIcon />
                                         </Box>
-                                        <Typography fontSize={`${isMobile && "12px"}`} variant="body2" color="#000000" fontWeight={600}>
+                                        <Typography fontSize={{xs: "12px"}} variant="body2" color="#000000" fontWeight={600}>
                                             My Favorite
                                         </Typography>
                                         <Typography variant="body2" color={"grey.main"} fontWeight={600} sx={{ margin: "0 10px" }}>
@@ -405,7 +411,7 @@ const Header = () => {
                                 )
                             } sx={{ display: "flex", cursor: "pointer", justifyContent: "space-around", padding: "4px 0", alignItems: "center", gap: ".5em" }}>
                                 <LocalMallIcon />
-                                <Typography fontSize={`${isMobile && "12px"}`} variant="body2" fontWeight={600}>
+                            <Typography fontSize={{ xs: "12px", sm: "16px" }} variant="body2" fontWeight={600}>
                                     My Cart
                                 </Typography>
                                 <Typography variant="body2" color={"grey.main"} fontWeight={600}>
@@ -413,7 +419,7 @@ const Header = () => {
                                 </Typography>
                             </Box>
                         </Box>
-                    }
+                    
                 </Grid>
             </div>
             <Sidebar
