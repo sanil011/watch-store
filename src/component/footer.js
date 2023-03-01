@@ -14,12 +14,12 @@ const Footer = () => {
     const [isMobile, setIsMobile] = useState("");
 
     useEffect(() => {
-        window
-            .matchMedia("(max-width:992px)")
-            .addEventListener("change", (e) => setIsTablet(e.matches));
+        // window
+        //     .matchMedia("(max-width:992px)")
+        //     .addEventListener("change", (e) => setIsTablet(e.matches));
         window
             .matchMedia("(max-width:768px)")
-            .addEventListener("change", (e) => setIsMobile(e.matches));
+            .addEventListener("change", (e) => setIsTablet(e.matches));
     }, []);
     return (
         <div>

@@ -1,4 +1,4 @@
-import { Typography, Stack, Divider, Grid, Box, IconButton } from "@mui/material";
+import { Typography, Stack, Divider, Grid, Box, IconButton, Backdrop, TextField } from "@mui/material";
 import Link from "next/link";
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -11,6 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import CloseIcon from "@mui/icons-material/Close";
 import { grey } from "@mui/material/colors";
 import Sidebar from "./sidebar";
 const Header = () => {
@@ -19,6 +20,7 @@ const Header = () => {
     );
 
     const [isMobile, setIsMobile] = useState("");
+    const [isSearching, setIsSearching] = useState(false);
     const { cartValue } = useSelector((state) => state.cart)
     const { favoriteValue } = useSelector((state) => state.favorite)
     const router = useRouter();
@@ -35,6 +37,8 @@ const Header = () => {
                 side: "top",
             })
         );
+
+    const handleToggle = () => setIsSearching((prev) => !prev);
 
     useEffect(() => {
         window
@@ -209,12 +213,82 @@ const Header = () => {
                     </Typography>
                 )}
             </div>
+            <Backdrop
+                open={isSearching}
+                sx={{
+                    justifyContent: "start",
+                    rowGap: "10rem",
+                    backgroundColor: "#1e2123eb",
+                    zIndex: "tooltip",
+                    flexDirection: "column",
+                    "& .MuiInput-root": {
+                        color: "white.main",
+                    },
+                    "& .MuiInputBase-root.MuiInput-root:before": {
+                        border: "none !important",
+                    },
+                    "& .MuiInputBase-root.MuiInput-root:after": {
+                        border: "none !important",
+                    },
+                }}
+            >
+                <Stack
+                    width={"100%"}
+                    direction="row"
+                    justifyContent="end"
+                    mt={{
+                        md: "2rem",
+                        sm: "3rem",
+                        xs: "1rem",
+                    }}
+                >
+                    <CloseIcon
+                        sx={{
+                            cursor: "pointer",
+                            color: "#fff !important",
+                            fontSize: "2rem !important",
+                            mr: {
+                                md: "8rem",
+                                sm: "3rem",
+                                xs: "1rem",
+                            },
+                        }}
+                        onClick={handleToggle}
+                    />
+                </Stack>
+                <Typography variant={"h4"} color={"#fff"} fontWeight={700} mt={15}>
+                    SEARCH
+                </Typography>
+                <Stack
+                    direction="row"
+                    borderBottom={1}
+                    borderColor={"#fbfbfb !important"}
+                    width={{
+                        md: "60%",
+                        sm: "80%",
+                        xs: "90%",
+                    }}
+                    justifyContent="space-between"
+                >
+                    <TextField
+                        sx={{ width: "100%" }}
+                        color={"white"}
+                        variant="standard"
+                        placeholder="what are you looking for?"
+                    />
+                    <SearchIcon
+                        sx={{ cursor: "pointer", color: "#fff !important" }}
+                    />
+                </Stack>
+            </Backdrop>
             <div style={{ borderBottom: "1.3px solid grey", padding: `${isMobile ? "0 0" : "10px 0"}` }}>
                 <Grid container>
                     <Grid item sx={{
-                        width: `${isMobile ? "30%" : "8%"}`, display: "flex", justifyContent: "space-around", alignItems: "center",
+                        width: `${isMobile ? "30%" : "8%"}`, display: "flex", justifyContent: "space-around", alignItems: "center", cursor: "pointer",
                         padding: `${isMobile ? "4px 0" : "0em 0em"}`
-                    }}>
+                    }}
+                        onClick={handleToggle}
+                    >
                         <SearchIcon />
                         <Typography fontSize={`${isMobile && "12px"}`} fontWeight={`${isMobile ? 600 : 500}`} >
                             Search

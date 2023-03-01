@@ -30,7 +30,7 @@ export default function Home() {
       .addEventListener("change", (e) => setIsTablet(e.matches));
     window
       .matchMedia("(max-width:768px)")
-      .addEventListener("change", (e) => setIsMobile(e.matches));
+      .addEventListener("change", (e) => setIsTablet(e.matches));
   }, []);
   return (
     <div>
