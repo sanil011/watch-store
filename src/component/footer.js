@@ -29,7 +29,7 @@ const Footer = () => {
                     <Typography color={"grey.main"}>Get all the latest information on Events, Sales and Offers.</Typography>
                 </div>
                 <div>
-                    <TextField sx={{ backgroundColor: "#fff", width: "25em", marginRight: "0em" }} label={"YOUR EMAIL"} />
+                    {/* <TextField sx={{ backgroundColor: "#fff", width: "25em", marginRight: "0em" }} label={"YOUR EMAIL"} /> */}
                     <Button
                         variant="outlined"
                         sx={{
