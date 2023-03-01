@@ -9,32 +9,21 @@ const Footer = () => {
     const company = ["About us", "Delivery", "Payment", "Contacts us"];
     const shop = ["For Him", "For Her", "For Kid", "Smart Watches", "Casio"];
 
-    const [isTablet, setIsTablet] = useState("");
-
-    const [isMobile, setIsMobile] = useState("");
-
-    useEffect(() => {
-        // window
-        //     .matchMedia("(max-width:992px)")
-        //     .addEventListener("change", (e) => setIsTablet(e.matches));
-        window
-            .matchMedia("(max-width:768px)")
-            .addEventListener("change", (e) => setIsTablet(e.matches));
-    }, []);
+  
     return (
         <div>
-            <div style={{ backgroundColor: "#F5F5F5", display: "flex", flexDirection: `${isTablet ? "column" : "row"}`, justifyContent: "space-between", gap: "3em", textAlign: "center", padding: "4em 1em", borderBottom: "1px solid grey" }}>
-                <div>
+            <Grid container gap={4}  justifyContent={"space-between"} sx={{ backgroundColor: "#F5F5F5",    padding: "4em 1em", borderBottom: "1px solid grey" }}>
+                <Grid item md={3.7} sm={11}>
                     <Typography>BE THE FIRST TO KNOW</Typography>
                     <Typography color={"grey.main"}>Get all the latest information on Events, Sales and Offers.</Typography>
-                </div>
-                <div>
-                    {/* <TextField sx={{ backgroundColor: "#fff", width: "25em", marginRight: "0em" }} label={"YOUR EMAIL"} /> */}
+                </Grid>
+                <Grid item md={3.7} sm={11}>
+                    <TextField sx={{ backgroundColor: "#fff", width: "65%",  }} label={"YOUR EMAIL"} />
                     <Button
                         variant="outlined"
                         sx={{
                             borderRadius: "0",
-                            width: "10em",
+                            width: "30%",
                             height: "4em",
                             borderColor: grey[500],
                             color: "#eee",
@@ -48,8 +37,8 @@ const Footer = () => {
                     >
                         SUBSCRIBE
                     </Button>
-                </div>
-                <div>
+                </Grid>
+                <Grid item md={3.7} sm={11} textAlign={{md:"right",sm:"left"}}>
                     <Button
                         variant="outlined"
                         sx={{
@@ -106,9 +95,8 @@ const Footer = () => {
                     >
                         <TwitterIcon />
                     </Button>
-                </div>
-
-            </div>
+                </Grid>
+            </Grid>
 
             <Grid
                 container

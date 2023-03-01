@@ -20,18 +20,7 @@ import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 export default function Home() {
   const brand = [brand1, brand2, brand3, brand4, brand5, brand6];
-  const [isTablet, setIsTablet] = useState("");
-
-  const [isMobile, setIsMobile] = useState("");
-
-  useEffect(() => {
-    // window
-    //   .matchMedia("(max-width:992px)")
-    //   .addEventListener("change", (e) => setIsTablet(e.matches));
-    window
-      .matchMedia("(max-width:768px)")
-      .addEventListener("change", (e) => setIsTablet(e.matches));
-  }, []);
+  
   return (
     <div>
 
@@ -95,8 +84,8 @@ export default function Home() {
       </Grid>
 
 
-      <div style={{ display: "flex", flexDirection: `${isTablet ? "column" : "row"}`, width: "100%", minHeight: "calc(100vh - 350px)" }}>
-        <div style={{ width: `${isTablet ? "100%" : "50%"}`, textAlign: "center", margin: "auto 0" }}>
+      <Box display={"flex"} flexDirection={{md:"row",sm:"column"}} width="100%" minHeight={"calc(100vh - 350px)"}>
+        <Box width={{ md: "50%", sm: "100%" }} sx={{  margin: "auto 0" }} textAlign={"center"}>
           <Typography
             color={"primary.main"}
             my={2}>
@@ -106,7 +95,7 @@ export default function Home() {
             WATCHES
           </Typography>
           <Typography variant='h2' fontWeight={700} display="flex" justifyContent={"center"}>
-            WITH <Typography variant='h2' fontWeight={700} pl={1} color={"primary.main"}>12% OFF</Typography>
+            WITH <Typography variant='h2' fontWeight={700}  color={"primary.main"}>12% OFF</Typography>
           </Typography>
           <Typography color={"grey.main"} my={2}>
             Find your perfectly suited watch and get it with a discount
@@ -114,18 +103,22 @@ export default function Home() {
           <Typography variant='body2' my={5}>
             GET A DISCOUNT →
           </Typography>
-        </div>
-        <div style={isTablet ? { position: "relative", width: `${isTablet ? "100%" : "50%"}`, height: "600px" } : { position: "relative", width: `${isTablet ? "100%" : "50%"}` }}>
+        </Box>
+        <Box
+          position={"relative"}
+          width={{ md: "50%", sm: "100%" }}
+          // height={"400px"}
+        >
           <Image
             src={brand7}
-            style={{
-              width: "100%", minHeight: "100%"
-            }}
+            // style={{
+            //   width: "100%", minHeight: "100%"
+            // }}
             alt=""
             fill
           />
-        </div>
-      </div>
+        </Box>
+      </Box>
 
       <Divider
         sx={{
@@ -203,7 +196,7 @@ export default function Home() {
             }}
             minHeight={"calc(100vh - 250px)"}
             position={"relative"}>
-            <Box zIndex="999" position={"absolute"} marginTop={"15em"} marginLeft={"4em"}>
+            <Box zIndex="999" position={"absolute"} marginTop={"15em"} marginLeft={"1em"}>
               <div style={{ display: "flex" }}>
                 <Typography variant='h4' fontFamily={"Barlow Condensed"}
                   fontStyle="italic">for</Typography>
@@ -232,13 +225,12 @@ export default function Home() {
 
         {/* SERVICES */}
 
-        <div style={{ width: "100%", backgroundColor: "#212121", display: "flex", flexDirection: `${isTablet ? "column" : "row"}` }}>
-          <div style={{
-            width: `${isTablet ? "100%" : "25%"}`, color: "#fff",
-            display: "flex", alignItems: "center", justifyContent: "center", borderRight: ".3px solid grey",
-            borderBottom: `${isTablet ? "1px solid grey" : "0"}`,
-            padding: `${isTablet ? "1em 0" : "0"}`
-          }}>
+        <Grid container sx={{ backgroundColor: "#212121" }}>
+          <Grid item md={3} sm={6} xs={12} display={"flex"} justifyContent={"center"} alignItems={"center"} sx={{
+       color: "#fff",
+          }}
+            width={{md:"100%",sm:"25%"}}
+            padding={{ md: "1em 0", sm: "0" }} borderBottom={{ md: "1px solid grey" }} border={".3px solid grey"}>
             <LocalShippingIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
             <div>
               <Typography color={"primary.main"} fontWeight={900}>
@@ -248,14 +240,13 @@ export default function Home() {
                 Don&rsquo;t pay for delivery
               </Typography>
             </div>
-          </div>
+          </Grid>
 
-          <div style={{
-            width: `${isTablet ? "100%" : "25%"}`, color: "#fff",
-            display: "flex", alignItems: "center", justifyContent: "center", borderRight: ".3px solid grey",
-            borderBottom: `${isTablet ? "1px solid grey" : "0"}`,
-            padding: `${isTablet ? "1em 0" : "0"}`
-          }}>
+          <Grid item md={3} sm={6} xs={12} display={"flex"} justifyContent={"center"} alignItems={"center"} sx={{
+            color: "#fff",
+          }}
+            width={{ md: "100%", sm: "25%" }}
+            padding={{ md: "1em 0", sm: "0" }} borderBottom={{ md: "1px solid grey" }} border={".3px solid grey"}>
             <CurrencyRupeeIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
             <div>
               <Typography color={"primary.main"} fontWeight={900}>
@@ -265,14 +256,13 @@ export default function Home() {
                 Money back option
               </Typography>
             </div>
-          </div>
+          </Grid>
 
-          <div style={{
-            width: `${isTablet ? "100%" : "25%"}`, color: "#fff",
-            display: "flex", alignItems: "center", justifyContent: "center", borderRight: ".3px solid grey",
-            borderBottom: `${isTablet ? "1px solid grey" : "0"}`,
-            padding: `${isTablet ? "1em 0" : "0"}`
-          }}>
+          <Grid item md={3} sm={6} xs={12} display={"flex"} justifyContent={"center"} alignItems={"center"} sx={{
+            color: "#fff",
+          }}
+            width={{ md: "100%", sm: "25%" }}
+            padding={{ md: "1em 0", sm: "0" }} borderBottom={{ md: "1px solid grey" }} border={".3px solid grey"}>
             <AdminPanelSettingsOutlinedIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
             <div>
               <Typography color={"primary.main"} fontWeight={900}>
@@ -282,13 +272,14 @@ export default function Home() {
                 Privacy policy guarantee
               </Typography>
             </div>
-          </div>
+          </Grid>
 
-          <div style={{
-            width: `${isTablet ? "100%" : "25%"}`, color: "#fff",
-            display: "flex", alignItems: "center", padding: "20px 0", justifyContent: "center",
-            padding: `${isTablet ? "1em 0" : "0"}`
-          }}>
+          <Grid item md={3} sm={6} xs={12} display={"flex"} justifyContent={"center"} alignItems={"center"} sx={{
+            color: "#fff",
+          }}
+            width={{ md: "100%", sm: "25%" }}
+            padding={{ md: "1em 0", sm: "0" }} borderBottom={{ md: "1px solid grey" }} border={".3px solid grey"} 
+          >
             <SupportAgentIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
             <div>
               <Typography color={"primary.main"} fontWeight={900} >
@@ -298,9 +289,9 @@ export default function Home() {
                 Consult with our suppoters
               </Typography>
             </div>
-          </div>
+          </Grid>
 
-        </div>
+        </Grid>
       </div>
 
       <Divider
