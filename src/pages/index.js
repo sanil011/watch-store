@@ -25,9 +25,9 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState("");
 
   useEffect(() => {
-    window
-      .matchMedia("(max-width:992px)")
-      .addEventListener("change", (e) => setIsTablet(e.matches));
+    // window
+    //   .matchMedia("(max-width:992px)")
+    //   .addEventListener("change", (e) => setIsTablet(e.matches));
     window
       .matchMedia("(max-width:768px)")
       .addEventListener("change", (e) => setIsTablet(e.matches));
