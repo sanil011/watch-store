@@ -36,9 +36,9 @@ export default function Home() {
     <div>
 
       <Swiper />
-      <Box display="flex" flexDirection={`${isTablet ? "column" : "row"}`} gap={`${isTablet ? "2em" : "0"}`} justifyContent="space-between" marginY="50px">
+      <Box display="flex" flexDirection={{sm:"column",md:"row",xs:"column"}}  gap={{sm:"1em",md:"2em",xs:"1em"}} justifyContent="space-between" marginY="50px">
         {brand?.map((db, idx) => (
-          <Stack key={idx} justifyContent={"center"} alignItems={"center"}>
+          <Stack direction={{ sm: "column", md: "row", xs: "column" }} gap={{ sm: "2em", md: "2em", xs: "2em" }} key={idx} justifyContent={"center"} alignItems={"center"}>
             <Image key={idx} src={db} alt="" />
           </Stack>
         ))}
