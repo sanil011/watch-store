@@ -118,7 +118,7 @@ const Header = () => {
                                     alignItems: "center",
                                 }}>
                                 <PhoneIphoneIcon />
-                                +95 8510882843
+                                +95 8637623568
                             </Typography>
                        
                             <Typography
