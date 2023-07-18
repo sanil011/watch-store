@@ -22,7 +22,7 @@ export default function Home() {
   const brand = [brand1, brand2, brand3, brand4, brand5, brand6];
   
   return (
-    <div>
+    <div style={{padding:"0 0em"}}>
 
       <Swiper />
       <Box display="flex" flexDirection={{sm:"column",md:"row",xs:"column"}}  gap={{sm:"1em",md:"2em",xs:"1em"}} justifyContent="space-between" marginY="50px">

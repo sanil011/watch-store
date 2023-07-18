@@ -12,7 +12,7 @@ const Footer = () => {
   
     return (
         <div>
-            <Grid container gap={4}  justifyContent={"space-between"} sx={{ backgroundColor: "#F5F5F5",    padding: "4em 1em", borderBottom: "1px solid grey" }}>
+            <Grid container gap={4}   justifyContent={"space-between"} sx={{ backgroundColor: "#F5F5F5",    padding: "4em 1em", borderBottom: "1px solid grey" }}>
                 <Grid item md={3.7} sm={11}>
                     <Typography>BE THE FIRST TO KNOW</Typography>
                     <Typography color={"grey.main"}>Get all the latest information on Events, Sales and Offers.</Typography>
@@ -120,11 +120,10 @@ const Footer = () => {
                         xs: "start",
                     }}
                     pl={{
-                        md: 0,
+                        md: 1,
                         sm: 2,
                         xs: 0,
                     }}
-
                     display={"flex"}
                     flexDirection={"column"}
                 >

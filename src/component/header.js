@@ -54,7 +54,7 @@ const Header = () => {
                         >
                             <Stack direction="row"
                                 spacing={1}
-                                sx={{ fontWeight: 'medium', flexWrap: "wrap" }}>
+                                sx={{ fontWeight: 'medium', flexWrap: "wrap",padding:"0 .3em" }}>
                                 <Link href="/" color="grey.main" sx={{ textDecoration: "none" }} >
                                     <Typography color={router.pathname == "/" ? "primary.main" : "grey.main"} fontWeight={600}
                                         fontSize={12}>HOME</Typography>
@@ -169,7 +169,8 @@ const Header = () => {
                             color: "grey",
                             flexWrap: "wrap",
                             fontSize: "0.6rem",
-                            textAlign:"right"
+                            textAlign: "right",
+                            marginRight:"1em"
                         }} >
                             GET SOCIAL:
                             <LinkedInIcon />
