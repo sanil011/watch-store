@@ -54,7 +54,7 @@ const Product = (name) => {
         <Box
             onMouseOver={() => setShow(true)}
             onMouseOut={() => setShow(false)}
-            style={{ display: "flex", flexDirection: "column", width: "100%", padding: "5px 0 15px 0", alignItems: "center", position: "relative", border: ".2px solid grey" }}>
+            style={{ display: "flex", flexDirection: "column", width: "100%", padding: "5px 0 15px 0", alignItems: "center", position: "relative", border: ".2px solid grey", cursor:"pointer" }}>
             <img
                 src={item?.src[0]}
                 alt=""

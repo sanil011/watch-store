@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+// import { useState, useEffect } from "react"
 import Image from 'next/image'
 import { Typography, Divider, Box, Stack, Button, Grid } from "@mui/material";
 import Swiper from "../component/swiper";
@@ -22,7 +22,7 @@ export default function Home() {
   const brand = [brand1, brand2, brand3, brand4, brand5, brand6];
   
   return (
-    <div style={{padding:"0 0em"}}>
+    <>
 
       <Swiper />
       <Box display="flex" flexDirection={{sm:"column",md:"row",xs:"column"}}  gap={{sm:"1em",md:"2em",xs:"1em"}} justifyContent="space-between" marginY="50px">
@@ -137,7 +137,7 @@ export default function Home() {
       />
 
       {/* FOR HER AND HIM */}
-      <div>
+      <Box>
 
         <Grid container >
           <Grid item
@@ -157,11 +157,11 @@ export default function Home() {
             minHeight={"calc(100vh - 250px)"}
           >
             <Box zIndex="999" position={"absolute"} marginLeft={"70%"} marginTop={"15em"}>
-              <div style={{ display: "flex" }}>
+              <Box style={{ display: "flex" }}>
                 <Typography variant='h4' fontFamily={"Barlow Condensed"}
                   fontStyle="italic">for</Typography>
                 <Typography variant='h4' pl={1.5} fontWeight={600}>HER</Typography>
-              </div>
+              </Box>
               <Button
                 variant="text"
                 sx={{
@@ -232,14 +232,14 @@ export default function Home() {
             width={{md:"100%",sm:"25%"}}
             padding={{ md: "1em 0", sm: "0" }} borderBottom={{ md: "1px solid grey" }} border={".3px solid grey"}>
             <LocalShippingIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
-            <div>
+            <Box>
               <Typography color={"primary.main"} fontWeight={900}>
                 FREE SHIPPING
               </Typography>
               <Typography>
                 Don&rsquo;t pay for delivery
               </Typography>
-            </div>
+            </Box>
           </Grid>
 
           <Grid item md={3} sm={6} xs={12} display={"flex"} justifyContent={"center"} alignItems={"center"} sx={{
@@ -248,14 +248,14 @@ export default function Home() {
             width={{ md: "100%", sm: "25%" }}
             padding={{ md: "1em 0", sm: "0" }} borderBottom={{ md: "1px solid grey" }} border={".3px solid grey"}>
             <CurrencyRupeeIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
-            <div>
+            <Box>
               <Typography color={"primary.main"} fontWeight={900}>
                 MONEY GUARANTEE
               </Typography>
               <Typography>
                 Money back option
               </Typography>
-            </div>
+            </Box>
           </Grid>
 
           <Grid item md={3} sm={6} xs={12} display={"flex"} justifyContent={"center"} alignItems={"center"} sx={{
@@ -264,14 +264,14 @@ export default function Home() {
             width={{ md: "100%", sm: "25%" }}
             padding={{ md: "1em 0", sm: "0" }} borderBottom={{ md: "1px solid grey" }} border={".3px solid grey"}>
             <AdminPanelSettingsOutlinedIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
-            <div>
+            <Box>
               <Typography color={"primary.main"} fontWeight={900}>
                 SAFE SHOPPING
               </Typography>
               <Typography>
                 Privacy policy guarantee
               </Typography>
-            </div>
+            </Box>
           </Grid>
 
           <Grid item md={3} sm={6} xs={12} display={"flex"} justifyContent={"center"} alignItems={"center"} sx={{
@@ -281,18 +281,18 @@ export default function Home() {
             padding={{ md: "1em 0", sm: "0" }} borderBottom={{ md: "1px solid grey" }} border={".3px solid grey"} 
           >
             <SupportAgentIcon fontSize={"large"} sx={{ padding: "0 10px 0 0 " }} />
-            <div>
+            <Box>
               <Typography color={"primary.main"} fontWeight={900} >
                 ONLINE SUPPORT
               </Typography>
               <Typography>
                 Consult with our suppoters
               </Typography>
-            </div>
+            </Box>
           </Grid>
 
         </Grid>
-      </div>
+      </Box>
 
       <Divider
         sx={{
@@ -349,6 +349,6 @@ export default function Home() {
         </Grid>
       </Grid>
 
-    </div>
+    </>
   )
 }

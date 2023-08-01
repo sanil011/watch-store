@@ -55,19 +55,19 @@ const Header = () => {
                             <Stack direction="row"
                                 spacing={1}
                                 sx={{ fontWeight: 'medium', flexWrap: "wrap",padding:"0 .3em" }}>
-                                <Link href="/" color="grey.main" sx={{ textDecoration: "none" }} >
+                                <Link href="/" color="grey.main" style={{ textDecoration: "none" }} >
                                     <Typography color={router.pathname == "/" ? "primary.main" : "grey.main"} fontWeight={600}
                                         fontSize={12}>HOME</Typography>
                                 </Link>
-                                <Link href="/about" >
+                            <Link href="/about" style={{ textDecoration: "none" }} >
                                     <Typography color={router.pathname == "/about" ? "primary.main" : "grey.main"} fontWeight={600}
                                         fontSize={12}>ABOUT</Typography>
                                 </Link>
-                                <Link href="/delivery">
+                            <Link href="/delivery" style={{ textDecoration: "none" }}>
                                     <Typography color={router.pathname == "/delivery" ? "primary.main" : "grey.main"} fontWeight={600}
                                         fontSize={12}>DELIVERY</Typography>
                                 </Link>
-                                <Link href="/contacts">
+                            <Link href="/contacts" style={{ textDecoration: "none" }}>
                                     <Typography color={router.pathname == "/contacts" ? "primary.main" : "grey.main"} fontWeight={600}
                                         fontSize={12}>CONTACTS</Typography>
                                 </Link>
@@ -317,26 +317,26 @@ const Header = () => {
                     <Grid item md={6} width={{ xs: "70%"}} padding={{ xs: "4px 0", sm: "0" }} sx={{ display: "flex", justifyContent: "center", alignContent: "center" }}>
                         <Stack direction="row" spacing={2}
                         >
-                            <Link href='/shop' sx={{ textDecoration: "none" }}>
-                                <Typography color="#000000" fontSize={{ xs: "12px", sm: "16px" }} fontWeight={{ xs: 600}} >WOMEN</Typography>
+                            <Link href='/shop' style={{ textDecoration: "none" }}>
+                                <Typography color="#000000" fontSize={{ xs: "12px", sm: "16px" }} fontWeight={{ xs: 600}} >MEN</Typography>
                             </Link>
-                            <Link href='/shop'>
-                                <Typography fontSize={{ xs: "12px",sm:"16px" }} fontWeight={{ xs: 600 }} color="#000000">MEN</Typography>
+                            <Link href='/shop' style={{ textDecoration: "none" }}>
+                                <Typography fontSize={{ xs: "12px",sm:"16px" }} fontWeight={{ xs: 600 }} color="#000000">WOMEN</Typography>
                             </Link>
-                            <Link href='/shop'>
+                            <Link href='/shop' style={{ textDecoration: "none" }}>
                                 <Typography fontSize={{ xs: "12px", sm: "16px" }} color="#000000">KIDS</Typography>
                             </Link>
-                            <Link href='/shop'>
+                            <Link href='/shop' style={{ textDecoration: "none" }}>
                                 <Typography fontSize={{ xs: "12px", sm: "16px" }} color="#000000">BRANDS</Typography>
                             </Link>
-                            <Link href='/shop'>
+                            <Link href='/shop' style={{ textDecoration: "none" }}>
                                 <Typography fontSize={{ xs: "12px", sm: "16px" }} color="#000000">OFFERS</Typography>
                             </Link>
                         </Stack>
                     </Grid>
                     <Grid item md={2} display={{ sm: "flex", xs: "none" }} justifyContent={"space-evenly"}
                         width={{  sm: "12%" }} >
-                        <Link href="/favorite" >
+                        <Link href="/favorite" style={{ textDecoration: "none" }}>
                             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
                                 <Divider
                                     orientation="vertical"

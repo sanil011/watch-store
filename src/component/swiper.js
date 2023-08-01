@@ -235,7 +235,7 @@ const Swipers = () => {
                     <Image src={Pic3} fill />
                 </Box>
             </SwiperSlide>
-        </Swiper >
+        </Swiper>
     )
 }
 
