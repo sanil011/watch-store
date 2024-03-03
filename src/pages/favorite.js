@@ -115,7 +115,7 @@ const Favorite = () => {
                                             },
                                         }}
                                         onClick={() =>
-                                            dispatch(favoriteActions.removeItem(db))
+                                        { dispatch(favoriteActions.removeItem(db)); console.log(db)}
                                         }
                                     >
                                         <CloseIcon

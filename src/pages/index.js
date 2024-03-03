@@ -25,19 +25,19 @@ export default function Home() {
     <>
 
       <Swiper />
-      <Box display="flex" flexDirection={{sm:"column",md:"row",xs:"column"}}  gap={{sm:"1em",md:"2em",xs:"1em"}} justifyContent="space-between" marginY="50px">
+      <Box display="flex" paddingX={"1em"} flexDirection={{sm:"column",md:"row",xs:"column"}}  gap={{sm:"1em",md:"2em",xs:"1em"}} justifyContent="space-between" marginY="50px">
         {brand?.map((db, idx) => (
           <Stack direction={{ sm: "column", md: "row", xs: "column" }} gap={{ sm: "1em", md: "1.5em", xs: "2em" }} key={idx} justifyContent={"center"} alignItems={"center"}>
             <Image key={idx} src={db} alt="" />
           </Stack>
         ))}
       </Box>
-      <Divider
+      {/* <Divider
         sx={{
           bgcolor: "grey.main",
           padding: ".3px"
         }}
-      />
+      /> */}
       <Typography variant='h4' fontWeight={400} textAlign={"center"} sx={{ margin: "30px 0" }}>
         TREND WATCHES
       </Typography>
@@ -94,8 +94,8 @@ export default function Home() {
           <Typography variant='h2' my={2} fontWeight={700}>
             WATCHES
           </Typography>
-          <Typography variant='h2' fontWeight={700} display="flex" justifyContent={"center"}>
-            WITH <Typography variant='h2' fontWeight={700}  color={"primary.main"}>12% OFF</Typography>
+          <Typography variant='h2' fontWeight={700} display="flex" gap={"0.4em"} justifyContent={"center"}>
+            WITH <span>12% OFF</span>
           </Typography>
           <Typography color={"grey.main"} my={2}>
             Find your perfectly suited watch and get it with a discount

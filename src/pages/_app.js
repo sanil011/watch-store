@@ -5,6 +5,7 @@ import Header from "../component/header";
 import Footer from "../component/footer";
 import store from "../store/store";
 import { Provider } from "react-redux";
+import { Toaster } from "react-hot-toast";
 const theme = createTheme({
   palette: {
     mode: "light",
@@ -29,6 +30,15 @@ const theme = createTheme({
 export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
+      <div >
+        <Toaster position='top-right' toastOptions={{
+          success: {
+            theme: {
+              primary: '#4aed88',
+            }
+          }
+        }} ></Toaster>
+      </div>
       <ThemeProvider theme={theme}>
         <Header />
         <Component {...pageProps} />

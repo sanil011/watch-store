@@ -9,6 +9,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from "@/store/cartSlice";
 import { favoriteActions } from "@/store/favoriteSlice";
 import CheckIcon from "@mui/icons-material/Check";
+import toast from 'react-hot-toast';
+import { FaHeart } from "react-icons/fa6";
+import { CiHeart } from "react-icons/ci";
+
+
 const Product = (name) => {
     const item = Watches[name.name];
     const { cartValue } = useSelector((state) => state.cart);
@@ -27,8 +32,15 @@ const Product = (name) => {
         dispatch(cartActions.cart({ name: name.name, price: +item?.price }))
     }
     const handleClickFavorite = () => {
+        console.log(name)
         dispatch(favoriteActions.favorite(name))
     }
+
+
+    const handleRemoveFavorite = () => {
+        dispatch(favoriteActions.removeItem(name.name))
+    }
+
     const raise = keyframes`
   0% {
         opacity: 0;
@@ -54,7 +66,7 @@ const Product = (name) => {
         <Box
             onMouseOver={() => setShow(true)}
             onMouseOut={() => setShow(false)}
-            style={{ display: "flex", flexDirection: "column", width: "100%", padding: "5px 0 15px 0", alignItems: "center", position: "relative", border: ".2px solid grey", cursor:"pointer" }}>
+            style={{ display: "flex", flexDirection: "column", width: "100%", padding: "5px 0 15px 0", alignItems: "center", position: "relative", border: ".2px solid grey", cursor: "pointer" }}>
             <img
                 src={item?.src[0]}
                 alt=""
@@ -96,7 +108,11 @@ const Product = (name) => {
                             backgroundColor: "secondary.main",
                         },
                     }}
-                    onClick={() => handleClickCart()}
+                    onClick={() => {
+                        handleClickCart();
+                        if (!isInCart)
+                            toast.success(`Successfully Added to Cart`);
+                    }}
                 >
 
 
@@ -123,21 +139,22 @@ const Product = (name) => {
                     disableRipple
                     sx={{
                         borderRadius: "0",
-                        color: isInFavorites ? "#fff" : "secondary.main",
-                        backgroundColor: isInFavorites ? "secondary.main" : "transparent",
                         border: "1px solid #000000",
                         px: 2,
                         whiteSpace: "nowrap",
-                        "&:hover": {
-                            color: "#fff",
-                            backgroundColor: "secondary.main",
-                        },
                     }}
-                    onClick={() => handleClickFavorite()}
+                    onClick={() => {
+                        if (!isInFavorites) {
+                            handleClickFavorite();
+                            toast.success(`Successfully Added to Wishlist`);
+                        } else {
+                            handleRemoveFavorite();
+                            toast.success(`Successfully remove item from Wishlist`);
+                        }
+                    }}
                 >
 
-                    <FavoriteBorderOutlinedIcon
-                    />
+                    {isInFavorites ? <FaHeart fontSize={25} color="#ff0000" /> : <CiHeart fontSize={25} />}
                 </Button>
             </Box>}
 
