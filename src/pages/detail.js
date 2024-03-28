@@ -10,6 +10,10 @@ import { cartActions } from "@/store/cartSlice";
 import { favoriteActions } from "@/store/favoriteSlice";
 import { useState, Fragment } from "react"
 import CheckIcon from "@mui/icons-material/Check";
+import toast from 'react-hot-toast';
+import { FaHeart } from "react-icons/fa6";
+import { CiHeart } from "react-icons/ci";
+
 const Detail = () => {
     const { Detail } = useSelector((state) => state.filter);
     const item = Detail && Watches[Detail.name]["src"];
@@ -26,17 +30,22 @@ const Detail = () => {
     const isInCart = cartValue.indexOf(Detail.name) !== -1;
     const isInFavorites = favoriteValue.indexOf(Detail.name) !== -1;
     const dispatch = useDispatch();
-    const [show, setShow] = useState(false)
-    const handleClick = () => {
-        dispatch(filterActions.detail(Detail));
-        router.push('/detail');
-    }
+
+ 
 
     const handleClickCart = () => {
         dispatch(cartActions.cart({ name: Detail.name, price: +item1?.price }))
     }
+    const handleRemoveCart = () => {
+        dispatch(cartActions.removeItem({ name: Detail.name, price: +item1?.price }))
+    }
     const handleClickFavorite = () => {
         dispatch(favoriteActions.favorite(Detail))
+    }
+
+    const handleRemoveFavorite = () => {
+        console.log(Detail)
+        dispatch(favoriteActions.removeItem(Detail))
     }
     return (
         <div >
@@ -72,7 +81,15 @@ const Detail = () => {
                                     backgroundColor: "secondary.main",
                                 },
                             }}
-                            onClick={() => handleClickCart()}
+                            onClick={() => {
+                                if (!isInCart) {
+                                    handleClickCart();
+                                    toast.success(`Successfully Added to Cart`);
+                                } else {
+                                    handleRemoveCart();
+                                    toast.success(`Successfully remove from Cart`);
+                                }
+                            }}
                         >
 
                             {!isInCart && (
@@ -106,11 +123,18 @@ const Detail = () => {
                                     backgroundColor: "secondary.main",
                                 },
                             }}
-                            onClick={() => handleClickFavorite()}
+                            onClick={() => {
+                                if (!isInFavorites) {
+                                    handleClickFavorite();
+                                    toast.success(`Successfully Added to Wishlist`);
+                                } else {
+                                    handleRemoveFavorite();
+                                    toast.success(`Successfully remove item from Wishlist`);
+                                }
+                            }}
                         >
 
-                            <FavoriteBorderOutlinedIcon
-                            />
+                            {isInFavorites ? <FaHeart fontSize={25} color="#ff0000" /> : <CiHeart fontSize={25} />}
                         </Button></Stack>
                 </Grid>
             </Grid>

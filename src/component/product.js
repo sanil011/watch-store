@@ -31,8 +31,10 @@ const Product = (name) => {
     const handleClickCart = () => {
         dispatch(cartActions.cart({ name: name.name, price: +item?.price }))
     }
+    const handleRemoveCart = () => {
+        dispatch(cartActions.removeItem({ name: name.name, price: +item?.price }))
+    }
     const handleClickFavorite = () => {
-        console.log(name)
         dispatch(favoriteActions.favorite(name))
     }
 
@@ -109,9 +111,13 @@ const Product = (name) => {
                         },
                     }}
                     onClick={() => {
+                        if (!isInCart) {    
                         handleClickCart();
-                        if (!isInCart)
                             toast.success(`Successfully Added to Cart`);
+                        } else {
+                            handleRemoveCart();
+                            toast.success(`Successfully remove from Cart`);
+                        }
                     }}
                 >
 
@@ -119,6 +125,7 @@ const Product = (name) => {
                     {!isInCart && (
                         <Fragment>
                             <ShoppingCartOutlinedIcon
+                                
                                 sx={{ fontSize: { md: "1.5rem", sm: "1rem", xs: "1.5rem" } }}
                             />
                             ADD TO CART
